@@ -1,9 +1,9 @@
 // import
 import React    from "react";
 import ReactDOM from "react-dom";
-import Board    from "./components/board";
+import Dungeon    from "./components/dungeon";
 
 
 document.addEventListener("DOMContentLoaded", () => {
-  ReactDOM.render(<Board />, document.getElementById("main"));
+  ReactDOM.render(<Dungeon />, document.getElementById("main"));
 });
