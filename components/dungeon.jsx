@@ -6,7 +6,7 @@ let _hero = null;
 
 const Dungeon = React.createClass({
   render() {
-    return <div class="dungeon">React is here!</div>;
+    return <div className="dungeon">React is here!</div>;
   }
 });
 
