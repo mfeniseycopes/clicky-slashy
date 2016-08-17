@@ -1,5 +1,28 @@
 .dungeon {
   width: 800px;
-  height: 450px;
-  background-color: #A38D64;
+  height: 500px;
+  background-color: #a38d64;
+  border: 10px dotted black;
+  position: relative;
+}
+
+
+.enemy {
+  background-color: #000000;
+  color: red;
+}
+
+.hero {
+  background-color: #ffcc00;
+  color: black;
+}
+
+/* dungeon is 32 x 20 tiles */
+.tile {
+  width: 25px;
+  height: 25px;
+  position: absolute;
+  line-height: 25px;
+  font-size: 20px;
+  text-align: center;
 }
