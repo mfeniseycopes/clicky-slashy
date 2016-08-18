@@ -12,7 +12,9 @@ class Enemy extends Entity {
     this.atkDistance = 25;
     this.agl = 5000;
     this.waitUntilAtk = 0;
-    this.destination = null;
+    this.waitUntilSwitchDir = 0;
+    this.destination = this.randomPos();
+    this.sensoryRange = 200;
   }
 
   attack() {
@@ -32,14 +34,19 @@ class Enemy extends Entity {
 
   move(elapsed) {
 
-    this.destination = this.hero().pos;
+
+    if (Entity.distance(this.pos, this.hero().pos) < this.sensoryRange) {
+      this.destination = this.hero().pos;
+    }
+    else if (this.waitUntilSwitchDir <= 0) {
+      this.destination = this.randomPos();
+      this.waitUntilSwitchDir = this.agl;
+    }
 
     let x = this.destination[0] - this.pos[0];
     let y = this.destination[1] - this.pos[1];
 
     let norm = Math.sqrt(x * x + y * y);
-
-    this.spd = 0.05;
 
     this.dir[0] = x / norm;
     this.dir[1] = y / norm;
@@ -58,7 +65,7 @@ class Enemy extends Entity {
       let leftPos = [this.pos[0] + moveY, this.pos[1] - moveX];
       let rightPos = [this.pos[0] - moveY, this.pos[1] + moveX];
       let revPos = [this.pos[0] - moveY, this.pos[1] - moveX];
-      
+
       if (this.validPos(leftPos)) {
         this.pos = leftPos;
       } else if (this.validPos(rightPos)) {
@@ -70,8 +77,13 @@ class Enemy extends Entity {
   }
 
   update(elapsed) {
-    this.waitUntilAtk -= elapsed;
+    this.updateTimers(elapsed);
     this.canAttack() ? this.attack() : this.move(elapsed);
+  }
+
+  updateTimers(elapsed) {
+    this.waitUntilAtk -= elapsed;
+    this.waitUntilSwitchDir -= elapsed;
   }
 
   validPos(pos) {

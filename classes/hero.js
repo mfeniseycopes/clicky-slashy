@@ -5,7 +5,7 @@ class Hero extends Entity {
     super(params);
     this.hp   = 100;
     this.atk  = 10;
-    this.atkDistance = 25;
+    this.atkDistance = 50;
     this.spd  = 0.2;
     this.dir  = [1, 0]; // start facing right
 
