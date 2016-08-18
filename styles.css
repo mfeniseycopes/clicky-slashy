@@ -1,11 +1,12 @@
 .dungeon {
-  width: 800px;
-  height: 500px;
+  width: 1200px;
+  height: 800px;
   background-color: #a38d64;
   border: 10px dotted black;
   position: relative;
+  box-sizing: content-box;
+  cursor: crosshair;
 }
-
 
 .enemy {
   background-color: #000000;
