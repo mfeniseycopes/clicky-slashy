@@ -19,7 +19,6 @@ const DungeonComp = React.createClass({
   },
 
   componentDidMount() {
-    console.log("componentDidMount");
     this.startGame();
 
     requestAnimationFrame(this.update);
@@ -43,7 +42,6 @@ const DungeonComp = React.createClass({
   },
 
   getInitialState() {
-    console.log(Date.now());
     return { lastUpdate: 0, dungeon: new Dungeon(10)};
   },
 
@@ -61,7 +59,6 @@ const DungeonComp = React.createClass({
 
   update(timestamp) {
 
-    console.log("update");
     let elapsed = (timestamp - this.state.lastUpdate);
 
     this.state.dungeon.update(elapsed);

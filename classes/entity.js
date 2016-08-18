@@ -15,11 +15,11 @@ class Entity {
   colliding() {
     let entities = this.dungeon.allEntities();
 
-    entities.forEach((entity) => {
-      if (this.collidingWith(entity)) {
+    for (let i = 0; i < entities.length; i++) {
+      if (this.collidingWith(entities[i])) {
         return true;
       }
-    });
+    }
 
     return false;
   }
@@ -30,13 +30,13 @@ class Entity {
     if (this.id === that.id) {
       return false;
     }
-    else if (this.topLeftWithin(that) || this.bottomRightWithin(that)) {
+    else if ((this.topLeftWithin(that) || this.bottomLeftWithin(that)) ||
+             (that.topLeftWithin(this) || that.bottomLeftWithin(this))) {
       return true;
     }
     else {
       return false;
     }
-
   }
 
   // determines if pos is within board bounds
@@ -61,31 +61,48 @@ class Entity {
       Math.floor(Math.random() * (this.dungeon.width - this.size[0])),
       Math.floor(Math.random() * (this.dungeon.height - this.size[1]))
     ];
-    console.log(pos);
 
     return pos;
   }
 
   receiveDamage(damage) {
-    console.log(`${this.class} takes ${damage}`);
     this.hp -= damage;
     if (this.hp <= 0) {
       this.alive = false;
-      console.log(`${this.class} is killed`);
     }
   }
 
   validPos(pos) {
+
     return (
       (pos[0] >= 0) && ((pos[0] + this.size[0]) <= this.dungeon.width) &&
       (pos[1] >= 0) && ((pos[1] + this.size[1]) <= this.dungeon.height)
     );
   }
 
-  _bottomRightWithin(that) {
+  willCollide(pos) {
+    let currentPos = this.pos;
+    this.pos = pos;
+    if (this.colliding()) {
+      this.pos = currentPos;
+      return true;
+    } else {
+      this.pos = currentPos;
+      return false;
+    }
+  }
+
+  bottomLeftWithin(that) {
     return (
-      (that.pos[0] > this.pos[0] && that.pos[0] < this.pos[0] + this.size[0]) &&
-      (that.pos[1] > this.pos[1] && that.pos[1] < this.pos[1] + this.size[1])
+      (this.pos[0] > that.pos[0] && this.pos[0] < that.pos[0] + that.size[0]) &&
+      (this.pos[1] + this.size[1] > that.pos[1] && this.pos[1] + this.size[1] < that.pos[1] + that.size[1])
+    );
+  }
+
+  topLeftWithin(that) {
+    return (
+      (this.pos[0] > that.pos[0] && this.pos[0] < that.pos[0] + that.size[0]) &&
+      (this.pos[1] > that.pos[1] && this.pos[1] < that.pos[1] + that.size[1])
     );
   }
 
@@ -95,14 +112,6 @@ class Entity {
 
     return Math.sqrt(x * x + y * y);
   }
-
-  _topLeftWithin(that) {
-    return (
-      (this.pos[0] > that.pos[0] && this.pos[0] < that.pos[0] + that.size[0]) &&
-      (this.pos[1] > that.pos[1] && this.pos[1] < that.pos[1] + that.size[1])
-    );
-  }
-
 }
 
 

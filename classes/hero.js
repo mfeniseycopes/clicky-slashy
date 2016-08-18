@@ -16,7 +16,6 @@ class Hero extends Entity {
 
   attack(enemy) {
     if (_distance(enemy.pos, this.pos) < this.atkDistance) {
-      console.log("attack!");
       enemy.receiveDamage(this.atk);
       return true;
     } else {
@@ -43,12 +42,8 @@ class Hero extends Entity {
       this.destination = null;
     }
     else if (this.validPos(newPos)) {
-        this.pos = newPos;
-      console.log(newPos);
+      this.pos = newPos;
     }
-
-    // this.pos[0] = this.pos[0] + moveX;
-    // this.pos[1] = this.pos[1] + moveY;
 
     if (this.destination && _distance(this.destination, this.pos) < 2) {
       this.destination = null;
@@ -58,7 +53,6 @@ class Hero extends Entity {
   moveToPos(pos) {
 
     if (this.validPos(pos)) {
-      console.log(`${pos} is valid`);
       this.destination = pos;
 
       let x = this.destination[0] - this.pos[0];
@@ -68,8 +62,6 @@ class Hero extends Entity {
 
       this.dir[0] = x / norm;
       this.dir[1] = y / norm;
-    } else {
-      console.log(`${pos} is invalid`);
     }
   }
 

@@ -12,6 +12,7 @@ class Enemy extends Entity {
     this.atkDistance = 25;
     this.agl = 5000;
     this.waitUntilAtk = 0;
+    this.destination = null;
   }
 
   attack() {
@@ -30,51 +31,36 @@ class Enemy extends Entity {
   }
 
   move(elapsed) {
-    let x = this.hero().pos[0] - this.pos[0];
-    let y = this.hero().pos[1] - this.pos[1];
+
+    this.destination = this.hero().pos;
+
+    let x = this.destination[0] - this.pos[0];
+    let y = this.destination[1] - this.pos[1];
 
     let norm = Math.sqrt(x * x + y * y);
 
-    if (norm > 25) {
+    this.spd = 0.05;
 
-      this.spd = 0.05;
+    this.dir[0] = x / norm;
+    this.dir[1] = y / norm;
 
-      this.dir[0] = x / norm;
-      this.dir[1] = y / norm;
+    let moveX = this.dir[0] * this.spd * elapsed;
+    let moveY = this.dir[1] * this.spd * elapsed;
 
-      let moveTop = this.dir[0] * this.spd * elapsed;
-      let moveLeft = this.dir[1] * this.spd * elapsed;
-      this.pos[0] = this.pos[0] + moveTop;
-      this.pos[1] = this.pos[1] + moveLeft;
-    }
-    else {
-      this.spd = 0;
+    let newPos = [this.pos[0] + moveX, this.pos[1] + moveY];
+
+    if (this.validPos(newPos)) {
+      this.pos = newPos;
     }
   }
 
   update(elapsed) {
     this.waitUntilAtk -= elapsed;
     this.canAttack() ? this.attack() : this.move(elapsed);
-    // let x = this.hero().pos[0] - this.pos[0];
-    // let y = this.hero().pos[1] - this.pos[1];
-    //
-    // let norm = Math.sqrt(x * x + y * y);
-    //
-    // if (norm > 25) {
-    //
-    //   this.spd = 0.05;
-    //
-    //   this.dir[0] = x / norm;
-    //   this.dir[1] = y / norm;
-    //
-    //   let moveTop = this.dir[0] * this.spd * elapsed;
-    //   let moveLeft = this.dir[1] * this.spd * elapsed;
-    //   this.pos[0] = this.pos[0] + moveTop;
-    //   this.pos[1] = this.pos[1] + moveLeft;
-    // }
-    // else {
-    //   this.spd = 0;
-    // }
+  }
+
+  validPos(pos) {
+    return super.validPos(pos) && !this.willCollide(pos);
   }
 }
 
