@@ -63,7 +63,7 @@ const DungeonComp = React.createClass({
 
     this.state.dungeon.update(elapsed);
 
-    this.setState({ lastUpdate: timestamp });
+    this.setState({ lastUpdate: timestamp, dungeon: this.state.dungeon });
 
     requestAnimationFrame(this.update);
   }

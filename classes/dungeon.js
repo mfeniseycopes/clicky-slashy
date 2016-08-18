@@ -18,7 +18,9 @@ class Dungeon {
   }
 
   allEntities() {
-    return [this.hero].concat(this.enemies);
+    if (this.hero) {
+      return [this.hero].concat(this.enemies);
+    }
   }
 
   findEnemyById(id) {

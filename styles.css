@@ -44,11 +44,21 @@ h1 {
   line-height: 25px;
   font-size: 20px;
   text-align: center;
-  overflow: hidden;
 }
 
-.entity > img {
+.entity > .fit-image {
   height: 100%;
   width: 100%;
   object-fit: cover;
+}
+
+.weapon {
+  position: absolute;
+  top: 20px;
+  left: -20px;
+  transition-duration: 1s ease;
+  height: 10px;
+  width: auto;
+  margin: -10px;
+  z-index: 100;
 }

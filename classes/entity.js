@@ -4,11 +4,12 @@ class Entity {
     this.id = params.id;
     this.size = [40, 40];
     this.dungeon = params.dungeon;
-    this.pos = this.randomPos();
+    this.alive = true;
+    this.pos = [0, 0];
 
-    this.alive = false;
     this.hp   = 0;
     this.class = params.class;
+    this.radius = 20;
   }
 
   collidable() {
@@ -34,8 +35,7 @@ class Entity {
     if (this.id === that.id) {
       return false;
     }
-    else if ((this.topLeftWithin(that) || this.bottomLeftWithin(that)) ||
-             (that.topLeftWithin(this) || that.bottomLeftWithin(this))) {
+    else if (this.radius + that.radius > Entity.distance(this.pos, that.pos)) {
       return true;
     }
     else {
@@ -43,12 +43,8 @@ class Entity {
     }
   }
 
-  // determines if pos is within board bounds
-  inBounds(pos) {
-    return (
-      (pos[0] >= 0 && pos[0] <= this.dungeon.width) &&
-      (pos[1] >= 1 && pos[1] <= this.dungeon.height)
-    );
+  inAttackRange(otherEntity) {
+    return (Entity.distance(this.pos, otherEntity.pos) - otherEntity.radius) < this.radius + this.atkDistance;
   }
 
   // selects random board position while avoiding other Entities
@@ -57,13 +53,14 @@ class Entity {
     while (this.colliding()) {
       this.pos = this.randomPos();
     }
+    return this.pos;
   }
 
   // selects random board position
   randomPos() {
     let pos = [
-      Math.floor(Math.random() * (this.dungeon.width - this.size[0])),
-      Math.floor(Math.random() * (this.dungeon.height - this.size[1]))
+      Math.floor(Math.random() * (this.dungeon.width - this.radius)),
+      Math.floor(Math.random() * (this.dungeon.height - this.radius))
     ];
 
     return pos;
@@ -79,8 +76,8 @@ class Entity {
   validPos(pos) {
 
     return (
-      (pos[0] >= 0) && ((pos[0] + this.size[0]) <= this.dungeon.width) &&
-      (pos[1] >= 0) && ((pos[1] + this.size[1]) <= this.dungeon.height)
+      (pos[0] - this.radius >= 0 && pos[0] + this.radius <= this.dungeon.width) &&
+      (pos[1] - this.radius >= 1 && pos[1] + this.radius <= this.dungeon.height)
     );
   }
 
@@ -94,20 +91,6 @@ class Entity {
       this.pos = currentPos;
       return false;
     }
-  }
-
-  bottomLeftWithin(that) {
-    return (
-      (this.pos[0] > that.pos[0] && this.pos[0] < that.pos[0] + that.size[0]) &&
-      (this.pos[1] + this.size[1] > that.pos[1] && this.pos[1] + this.size[1] < that.pos[1] + that.size[1])
-    );
-  }
-
-  topLeftWithin(that) {
-    return (
-      (this.pos[0] > that.pos[0] && this.pos[0] < that.pos[0] + that.size[0]) &&
-      (this.pos[1] > that.pos[1] && this.pos[1] < that.pos[1] + that.size[1])
-    );
   }
 
   static distance(pos1, pos2) {

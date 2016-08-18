@@ -5,7 +5,7 @@ class Hero extends Entity {
     super(params);
     this.hp   = 100;
     this.atk  = 10;
-    this.atkDistance = 50;
+    this.atkDistance = 80;
     this.spd  = 0.2;
     this.dir  = [1, 0]; // start facing right
 
@@ -22,13 +22,6 @@ class Hero extends Entity {
       return false;
     }
 
-  }
-
-  startingPos() {
-    return [
-      Math.floor(this.dungeon.width / 2) - Math.floor(this.size[0] / 2),
-      Math.floor(this.dungeon.height / 2) - Math.floor(this.size[1] / 2)
-    ];
   }
 
   move(elapsed) {
@@ -65,11 +58,22 @@ class Hero extends Entity {
     }
   }
 
+  startingPos() {
+    return [
+      Math.floor(this.dungeon.width / 2) - Math.floor(this.radius),
+      Math.floor(this.dungeon.height / 2) - Math.floor(this.radius)
+    ];
+  }
+
   update(elapsed) {
     // only move if not at destination
     if (this.destination) {
       this.move(elapsed);
     }
+  }
+
+  validPos(pos) {
+    return super.validPos(pos) && !this.willCollide(pos);
   }
 }
 
