@@ -9,19 +9,18 @@ class Hero extends Entity {
     this.spd  = 0.2;
     this.dir  = [1, 0]; // start facing right
 
-    this.pos  = this.startingPos();
+    this.pos  = this.dungeon.center();
     this.destination = null;
     this.alive = true;
   }
 
   attack(enemy) {
-    if (_distance(enemy.pos, this.pos) < this.atkDistance) {
+    if (this.inAttackRange(enemy)) {
       enemy.receiveDamage(this.atk);
       return true;
     } else {
       return false;
     }
-
   }
 
   move(elapsed) {
@@ -38,7 +37,7 @@ class Hero extends Entity {
       this.pos = newPos;
     }
 
-    if (this.destination && _distance(this.destination, this.pos) < 2) {
+    if (this.destination && Entity.distance(this.destination, this.pos) < 2) {
       this.destination = null;
     }
   }
@@ -51,18 +50,11 @@ class Hero extends Entity {
       let x = this.destination[0] - this.pos[0];
       let y = this.destination[1] - this.pos[1];
 
-      let norm = Math.sqrt(x * x + y * y);
+      let norm = Entity.distance(this.destination, this.pos);
 
       this.dir[0] = x / norm;
       this.dir[1] = y / norm;
     }
-  }
-
-  startingPos() {
-    return [
-      Math.floor(this.dungeon.width / 2) - Math.floor(this.radius),
-      Math.floor(this.dungeon.height / 2) - Math.floor(this.radius)
-    ];
   }
 
   update(elapsed) {
@@ -75,13 +67,6 @@ class Hero extends Entity {
   validPos(pos) {
     return super.validPos(pos) && !this.willCollide(pos);
   }
-}
-
-function _distance(pos1, pos2) {
-  let x = pos1[0] - pos2[0];
-  let y = pos1[1] - pos2[1];
-
-  return Math.sqrt(x * x + y * y);
 }
 
 module.exports = Hero;

@@ -9,7 +9,7 @@ class Enemy extends Entity {
     this.dir  = [0, 0];
     this.spd  = 0.05;
     this.alive = true;
-    this.atkDistance = 40;
+    this.atkDistance = 10;
     this.agl = 5000;
     this.waitUntilAtk = 0;
     this.waitUntilSwitchDir = 0;
@@ -25,8 +25,6 @@ class Enemy extends Entity {
       this.dungeon.hero.receiveDamage(this.atk);
       this.waitUntilAtk = this.agl;
       this.attacking = this.atkAnimationLength;
-      console.log(this.atkAnimationLength);
-      console.log(this.attacking);
     }
   }
 
@@ -83,7 +81,7 @@ class Enemy extends Entity {
 
   update(elapsed) {
     this.updateTimers(elapsed);
-    this.canAttack() ? this.attack() : this.move(elapsed);
+    this.inAttackRange(this.hero()) ? this.attack() : this.move(elapsed);
   }
 
   updateTimers(elapsed) {

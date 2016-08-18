@@ -23,6 +23,10 @@ class Dungeon {
     }
   }
 
+  center() {
+    return [this.width / 2, this.height / 2];
+  }
+
   findEnemyById(id) {
     for (let i = 0; i < this.enemies.length; i++) {
       if (this.enemies[i].id === id) {
