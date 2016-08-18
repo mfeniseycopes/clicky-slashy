@@ -37,7 +37,7 @@ class Enemy extends Entity {
     if (Entity.distance(this.pos, this.hero().pos) < this.sensoryRange) {
       this.destination = this.hero().pos;
     }
-    else if (this.waitUntilSwitchDir <= 0) {
+    else if (this.destination === this.pos || this.waitUntilSwitchDir <= 0) {
       this.destination = this.randomPos();
       this.waitUntilSwitchDir = this.agl;
     }
