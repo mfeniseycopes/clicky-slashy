@@ -11,8 +11,8 @@ const HeroComp = React.createClass({
     };
 
     return (
-      <div className="hero entity" style={divStyle}>
-        <img className="fit-image" src="./images/cat-hero.png" />
+      <div className="hero entity" style={divStyle} draggable="false" >
+        <img className="fit-image" draggable="false" src="./images/cat-hero.png" />
       </div>
     );
   }

@@ -82,6 +82,13 @@ class Entity {
     );
   }
 
+  static distance(pos1, pos2) {
+    let x = pos1[0] - pos2[0];
+    let y = pos1[1] - pos2[1];
+
+    return Math.sqrt(x * x + y * y);
+  }
+
   _topLeftWithin(that) {
     return (
       (this.pos[0] > that.pos[0] && this.pos[0] < that.pos[0] + that.size[0]) &&
@@ -90,5 +97,8 @@ class Entity {
   }
 
 }
+
+
+
 
 module.exports = Entity;

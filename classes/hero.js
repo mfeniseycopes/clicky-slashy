@@ -11,6 +11,7 @@ class Hero extends Entity {
 
     this.pos  = this.startingPos();
     this.destination = null;
+    this.alive = true;
   }
 
   attack(enemy) {
@@ -31,6 +32,18 @@ class Hero extends Entity {
     ];
   }
 
+  move(elapsed) {
+    let moveTop = this.dir[0] * this.spd * elapsed;
+    let moveLeft = this.dir[1] * this.spd * elapsed;
+
+    this.pos[0] = this.pos[0] + moveTop;
+    this.pos[1] = this.pos[1] + moveLeft;
+
+    if (_distance(this.destination, this.pos) < 2) {
+      this.destination = null;
+    }
+  }
+
   moveToPos(pos) {
     this.destination = pos;
 
@@ -46,16 +59,7 @@ class Hero extends Entity {
   update(elapsed) {
     // only move if not at destination
     if (this.destination) {
-      let lastPos = this.pos.slice();
-      let moveTop = this.dir[0] * this.spd * elapsed;
-      let moveLeft = this.dir[1] * this.spd * elapsed;
-
-      this.pos[0] = this.pos[0] + moveTop;
-      this.pos[1] = this.pos[1] + moveLeft;
-
-      if (_distance(this.destination, this.pos) < 2) {
-        this.destination = null;
-      }
+      this.move(elapsed);
     }
   }
 }

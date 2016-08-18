@@ -11,8 +11,8 @@ const EnemyComp = React.createClass({
     };
 
     return (
-      <div className="enemy entity" id={this.props.enemy.id} style={divStyle} onClick={ this.props.attackEnemy }>
-          <img className="fit-image" src="./images/spider-1.png" />
+      <div className="enemy entity" id={this.props.enemy.id} style={divStyle} onClick={ this.props.attackEnemy } draggable="false" >
+          <img className="fit-image" draggable="false" src="./images/spider-1.png" />
       </div>
     );
   }
