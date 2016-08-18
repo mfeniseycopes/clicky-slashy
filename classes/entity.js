@@ -75,6 +75,13 @@ class Entity {
     }
   }
 
+  validPos(pos) {
+    return (
+      (pos[0] >= 0) && ((pos[0] + this.size[0]) <= this.dungeon.width) &&
+      (pos[1] >= 0) && ((pos[1] + this.size[1]) <= this.dungeon.height)
+    );
+  }
+
   _bottomRightWithin(that) {
     return (
       (that.pos[0] > this.pos[0] && that.pos[0] < this.pos[0] + this.size[0]) &&
