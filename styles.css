@@ -1,3 +1,21 @@
+div {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background-color: #3B3832;
+}
+
+body > * {
+  margin: 0 auto;
+}
+
+h1 {
+  color: #E8E0CA;
+  text-align: center;
+}
+
 .dungeon {
   width: 1200px;
   height: 800px;
@@ -6,6 +24,7 @@
   position: relative;
   box-sizing: content-box;
   cursor: crosshair;
+  margin: 0 auto;
 }
 
 .enemy {

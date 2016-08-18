@@ -5,6 +5,9 @@ class Entity {
     this.size = [25, 25];
     this.dungeon = params.dungeon;
     this.pos = this.randomPos();
+
+    this.alive = false;
+    this.hp   = 0;
   }
 
   // determines if pos is within board bounds
@@ -60,6 +63,13 @@ class Entity {
     console.log(pos);
 
     return pos;
+  }
+
+  receiveDamage(damage) {
+    this.hp -= damage;
+    if (this.hp <= 0) {
+      this.alive = false;
+    }
   }
 
   _bottomRightWithin(that) {

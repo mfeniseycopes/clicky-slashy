@@ -5,6 +5,7 @@ class Hero extends Entity {
     super(params);
     this.hp   = 100;
     this.atk  = 10;
+    this.atkDistance = 25;
     this.spd  = 0.2;
     this.dir  = [1, 0]; // start facing right
 
@@ -13,6 +14,13 @@ class Hero extends Entity {
   }
 
   attack(enemy) {
+    if (_distance(enemy.pos, this.pos) < this.atkDistance) {
+      console.log("attack!");
+      enemy.receiveDamage(this.atk);
+      return true;
+    } else {
+      return false;
+    }
 
   }
 

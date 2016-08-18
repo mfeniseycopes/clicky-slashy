@@ -11,7 +11,7 @@ const EnemyComp = React.createClass({
     };
 
     return (
-      <div className="enemy tile" style={divStyle}>
+      <div className="enemy tile" id={this.props.enemy.id} style={divStyle} onClick={ this.props.attackEnemy }>
         🕷
       </div>
     );

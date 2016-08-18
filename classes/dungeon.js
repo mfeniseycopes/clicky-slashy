@@ -21,9 +21,21 @@ class Dungeon {
     return [this.hero].concat(this.enemies);
   }
 
+  findEnemyById(id) {
+    for (let i = 0; i < this.enemies.length; i++) {
+      if (this.enemies[i].id === id) {
+        return this.enemies[i];
+      }
+    }
+
+    return null;
+  }
+
   update(elapsed) {
     this.enemies.forEach((enemy) => {
-      enemy.update(elapsed);
+      if (enemy.alive) {
+        enemy.update(elapsed);
+      }
     });
 
     this.hero.update(elapsed);

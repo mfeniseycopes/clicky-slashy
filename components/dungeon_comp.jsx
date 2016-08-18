@@ -11,6 +11,13 @@ import HeroComp   from "./hero_comp";
 
 const DungeonComp = React.createClass({
 
+  attackEnemy(e) {
+    let clickedEnemy = this.state.dungeon.findEnemyById(parseInt(e.target.id));
+    if (this.state.dungeon.hero.attack(clickedEnemy)) {
+      e.preventDefault();
+    }
+  },
+
   componentDidMount() {
     console.log("componentDidMount");
     this.startGame();
@@ -20,7 +27,7 @@ const DungeonComp = React.createClass({
 
   enemies() {
     return this.state.dungeon.enemies.map((enemy) => {
-      return <EnemyComp enemy={enemy} />;
+      return <EnemyComp key={enemy.id} enemy={enemy} attackEnemy={ this.attackEnemy }/>;
     });
   },
 
@@ -30,14 +37,14 @@ const DungeonComp = React.createClass({
     return (
       <div className="dungeon" onClick={this.moveHero}>
         { enemies }
-        <HeroComp hero={this.state.dungeon.hero} onClick={ this.moveHero }/>
+        <HeroComp hero={this.state.dungeon.hero}/>
       </div>
     );
   },
 
   getInitialState() {
     console.log(Date.now());
-    return { lastUpdate: 0, dungeon: new Dungeon(2)};
+    return { lastUpdate: 0, dungeon: new Dungeon(10)};
   },
 
   moveHero(e) {

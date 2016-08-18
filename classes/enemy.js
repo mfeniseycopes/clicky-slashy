@@ -4,10 +4,11 @@ class Enemy extends Entity {
   constructor(params) {
     super(params);
     this.name = "spider";
-    this.hp   = 10;
+    this.hp   = 5;
     this.atk  = 1;
     this.dir  = [0, 0];
     this.spd  = 0.05;
+    this.alive = true;
   }
 
   hero() {
