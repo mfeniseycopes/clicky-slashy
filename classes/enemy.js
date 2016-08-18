@@ -34,7 +34,6 @@ class Enemy extends Entity {
 
   move(elapsed) {
 
-
     if (Entity.distance(this.pos, this.hero().pos) < this.sensoryRange) {
       this.destination = this.hero().pos;
     }

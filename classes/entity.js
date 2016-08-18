@@ -11,12 +11,16 @@ class Entity {
     this.class = params.class;
   }
 
+  collidable() {
+    return this.alive;
+  }
+
   // determine if entity is colliding with any other entity on board
   colliding() {
     let entities = this.dungeon.allEntities();
 
     for (let i = 0; i < entities.length; i++) {
-      if (this.collidingWith(entities[i])) {
+      if (entities[i].collidable() && this.collidingWith(entities[i])) {
         return true;
       }
     }
