@@ -2,7 +2,7 @@ class Entity {
 
   constructor(params) {
     this.id = params.id;
-    this.size = [25, 25];
+    this.size = [40, 40];
     this.dungeon = params.dungeon;
     this.pos = this.randomPos();
 
