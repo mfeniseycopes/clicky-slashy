@@ -57,35 +57,15 @@ class Enemy extends Entity {
 
       let leftPos = [this.pos[0] + moveY, this.pos[1] - moveX];
       let rightPos = [this.pos[0] - moveY, this.pos[1] + moveX];
+      let revPos = [this.pos[0] - moveY, this.pos[1] - moveX];
+      
       if (this.validPos(leftPos)) {
         this.pos = leftPos;
       } else if (this.validPos(rightPos)) {
         this.pos = rightPos;
+      } else if (this.validPos(revPos)){
+        this.pos = revPos;
       }
-      // enemies are square, so best way to get around them is moving in cardinal direction
-      else {
-        // if moving mostly left or right
-        if (Math.abs(moveX) > Math.abs(moveY)) {
-          let upPos = [this.pos[0], -1 * this.pos[1] + this.spd * elapsed];
-          let downPos = [this.pos[0], this.pos[1] + this.spd * elapsed];
-          if (this.validPos(upPos)) {
-            this.pos = upPos;
-          } else if (this.validPos(downPos)) {
-            this.pos = downPos;
-          }
-        }
-        // if moving mostly up and down
-        else {
-          let leftPos = [this.pos[0] + -1 * this.spd * elapsed, this.pos[1]];
-          let rightPos = [this.pos[0] + this.spd * elapsed, this.pos[1]];
-          if (this.validPos(leftPos)) {
-            this.pos = leftPos;
-          } else if (this.validPos(rightPos)) {
-            this.pos = rightPos;
-          }
-        }
-      }
-
     }
   }
 
