@@ -16,18 +16,19 @@ class Enemy {
 
     let norm = Math.sqrt(x * x + y * y);
 
-    if (x > 25 || y > 25) {
+    if (norm > 25) {
 
-      this.spd = 0.5;
+      this.spd = 50;
 
       this.dir[0] = x / norm;
       this.dir[1] = y / norm;
 
-      let moveTop = this.dir[0] * this.spd * elapsed / 1000;
-      let moveLeft = this.dir[1] * this.spd * elapsed / 1000;
+      let moveTop = this.dir[0] * this.spd * elapsed;
+      let moveLeft = this.dir[1] * this.spd * elapsed;
       this.pos[0] = this.pos[0] + moveTop;
       this.pos[1] = this.pos[1] + moveLeft;
-    } else {
+    }
+    else {
       this.spd = 0;
     }
   }

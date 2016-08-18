@@ -2,9 +2,11 @@
 import React    from "react";
 import Enemy from "../classes/enemy";
 import Hero from "../classes/hero";
+import EnemyComp from "./enemy_comp";
+import HeroComp from "./hero_comp";
 
-let _hero = new Hero(100, 10, [400, 250]);
-let _enemies = [new Enemy("spider", 5, 1, 0.5, [25, 25], _hero)];
+let _hero = new Hero(100, 200, [400, 250]);
+let _enemies = [new Enemy("spider", 5, 1, 50, [25, 25], _hero)];
 
 const Dungeon = React.createClass({
 
@@ -17,40 +19,17 @@ const Dungeon = React.createClass({
 
   enemies() {
     return _enemies.map((enemy) => {
-      let divStyle = {
-        left: `${enemy.pos[0]}px`,
-        top: `${enemy.pos[1]}px`
-      };
-
-      return (
-        <div className="enemy tile" style={divStyle}>
-          🕷
-        </div>
-      );
+      return <EnemyComp enemy={enemy} />;
     });
-  },
-
-  hero() {
-    let divStyle = {
-      left: `${_hero.pos[0]}px`,
-      top: `${_hero.pos[1]}px`
-    };
-
-    return (
-      <div className="hero tile" style={divStyle}>
-        ⚔
-      </div>
-    );
   },
 
   render() {
     let enemies = this.enemies();
-    let hero = this.hero();
 
     return (
-      <div className="dungeon">
+      <div className="dungeon" onClick={this.moveHero}>
         { enemies }
-        { hero }
+        <HeroComp hero={_hero}/>
       </div>
     );
   },
@@ -60,6 +39,11 @@ const Dungeon = React.createClass({
     return { lastUpdate: 0 };
   },
 
+  moveHero(e) {
+    e.preventDefault();
+    _hero.moveToPos([e.clientX, e.clientY]);
+  },
+
   startGame() {
 
   },
@@ -67,8 +51,8 @@ const Dungeon = React.createClass({
   update(timestamp) {
 
     console.log("update");
-    let elapsed = timestamp - this.state.lastUpdate;
-    this.updateEntities(timestamp);
+    let secondsElapsed = (timestamp - this.state.lastUpdate) / 1000;
+    this.updateEntities(secondsElapsed);
 
     this.setState({ lastUpdate: timestamp });
 
@@ -79,6 +63,7 @@ const Dungeon = React.createClass({
     _enemies.forEach((enemy) => {
       enemy.update(elapsed);
     });
+    _hero.update(elapsed);
   }
 });
 
