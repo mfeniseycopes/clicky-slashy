@@ -8,14 +8,7 @@ class Entity {
 
     this.alive = false;
     this.hp   = 0;
-  }
-
-  // determines if pos is within board bounds
-  inBounds(pos) {
-    return (
-      (pos[0] >= 0 && pos[0] <= this.dungeon.width) &&
-      (pos[1] >= 1 && pos[1] <= this.dungeon.height)
-    );
+    this.class = params.class;
   }
 
   // determine if entity is colliding with any other entity on board
@@ -46,6 +39,14 @@ class Entity {
 
   }
 
+  // determines if pos is within board bounds
+  inBounds(pos) {
+    return (
+      (pos[0] >= 0 && pos[0] <= this.dungeon.width) &&
+      (pos[1] >= 1 && pos[1] <= this.dungeon.height)
+    );
+  }
+
   // selects random board position while avoiding other Entities
   randomOpenPos() {
     this.pos = this.randomPos();
@@ -66,9 +67,11 @@ class Entity {
   }
 
   receiveDamage(damage) {
+    console.log(`${this.class} takes ${damage}`);
     this.hp -= damage;
     if (this.hp <= 0) {
       this.alive = false;
+      console.log(`${this.class} is killed`);
     }
   }
 

@@ -28,27 +28,31 @@ h1 {
 }
 
 .enemy {
-  /*background-color: #000000;*/
+  background-color: #000000;
   color: red;
 }
 
 .hero {
-  /*background-color: #ffcc00;*/
+  background-color: #ffcc00;
   color: black;
 }
 
-.entity {
-  width: 50px;
-  height: 50px;
+/* dungeon is 32 x 20 tiles */
+.tile {
+  width: 25px;
+  height: 25px;
   position: absolute;
   line-height: 25px;
   font-size: 20px;
   text-align: center;
+}
+
+.entity {
   overflow: hidden;
 }
 
-.entity > img {
-  height: 100%;
-  width: 100%;
+.tile image {
+  height: 25px;
+  width: 25px;
   object-fit: cover;
 }
