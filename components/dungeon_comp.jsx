@@ -42,9 +42,9 @@ const DungeonComp = React.createClass({
 
   moveHero(e) {
     e.preventDefault();
-    let x = e.clientX - e.target.clientLeft - e.target.offsetLeft;
-    let y = e.clientY - e.target.clientTop - e.target.offsetTop;
-    // console.log(`${e.clientX}, ${e.clientY}`);
+
+    let x = e.clientX - e.currentTarget.clientLeft - e.currentTarget.offsetLeft;
+    let y = e.clientY - e.currentTarget.clientTop - e.currentTarget.offsetTop;
     this.state.dungeon.hero.moveToPos([x, y]);
   },
 

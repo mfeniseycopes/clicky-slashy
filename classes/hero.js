@@ -45,7 +45,7 @@ class Hero extends Entity {
       this.pos[0] = this.pos[0] + moveTop;
       this.pos[1] = this.pos[1] + moveLeft;
 
-      if (_distance(this.destination, this.pos) < 3) {
+      if (_distance(this.destination, this.pos) < 2) {
         this.destination = null;
       }
     }
