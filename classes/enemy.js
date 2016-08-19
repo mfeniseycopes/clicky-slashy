@@ -46,13 +46,12 @@ class Enemy extends Entity {
       this.waitUntilSwitchDir = this.agl;
     }
 
-    let x = this.destination[0] - this.pos[0];
-    let y = this.destination[1] - this.pos[1];
+    // this.destination = pos;
 
-    let norm = Math.sqrt(x * x + y * y);
+    let norm = Entity.distance(this.destination, this.pos);
 
-    this.dir[0] = x / norm;
-    this.dir[1] = y / norm;
+    this.dir[0] = (this.destination[0] - this.pos[0]) / norm;
+    this.dir[1] = (this.destination[1] - this.pos[1]) / norm;
 
     let moveX = this.dir[0] * this.spd * elapsed;
     let moveY = this.dir[1] * this.spd * elapsed;

@@ -47,13 +47,10 @@ class Hero extends Entity {
     if (this.validPos(pos)) {
       this.destination = pos;
 
-      let x = this.destination[0] - this.pos[0];
-      let y = this.destination[1] - this.pos[1];
-
       let norm = Entity.distance(this.destination, this.pos);
 
-      this.dir[0] = x / norm;
-      this.dir[1] = y / norm;
+      this.dir[0] = (this.destination[0] - this.pos[0]) / norm;
+      this.dir[1] = (this.destination[1] - this.pos[1]) / norm;
     }
   }
 

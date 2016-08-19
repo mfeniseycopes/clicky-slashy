@@ -73,6 +73,10 @@ class Entity {
     }
   }
 
+  setDestination() {
+    
+  }
+
   validPos(pos) {
 
     return (
