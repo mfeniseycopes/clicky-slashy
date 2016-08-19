@@ -13,8 +13,17 @@ const HeroComp = React.createClass({
     return (
       <div className="hero entity" style={divStyle} draggable="false" >
         <img className="fit-image" draggable="false" src="./images/cat-hero.png" />
+        <img className={this.weaponClassNames()} draggable="false" src="images/sword-buster.png" />
       </div>
     );
+  },
+
+  weaponClassNames() {
+    let classNames = "weapon";
+    if (this.props.hero.attacking > 0) {
+      classNames += " attacking";
+    }
+    return classNames;
   }
 
 });

@@ -16,20 +16,6 @@ class Enemy extends Entity {
     this.destination = this.randomPos();
     this.sensoryRange = 200;
     this.randomOpenPos();
-    this.attacking = 0;
-    this.atkAnimationLength = 1000; // ms
-  }
-
-  attack() {
-    if (this.waitUntilAtk <= 0) {
-      this.dungeon.hero.receiveDamage(this.atk);
-      this.waitUntilAtk = this.agl;
-      this.attacking = this.atkAnimationLength;
-    }
-  }
-
-  canAttack() {
-    return Entity.distance(this.pos, this.dungeon.hero.pos) <= this.atkDistance;
   }
 
   hero() {
@@ -79,13 +65,13 @@ class Enemy extends Entity {
   }
 
   update(elapsed) {
-    this.updateTimers(elapsed);
-    this.inAttackRange(this.hero()) ? this.attack() : this.move(elapsed);
+    // this.updateTimers(elapsed);
+    super.update(elapsed);
+    this.inAttackRange(this.hero()) ? this.attack(this.hero()) : this.move(elapsed);
   }
 
   updateTimers(elapsed) {
-    this.attacking -= elapsed;
-    this.waitUntilAtk -= elapsed;
+    super.updateTimers(elapsed);
     this.waitUntilSwitchDir -= elapsed;
   }
 

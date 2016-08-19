@@ -2,7 +2,6 @@ class Entity {
 
   constructor(params) {
     this.id = params.id;
-    this.size = [40, 40];
     this.dungeon = params.dungeon;
     this.alive = true;
     this.pos = [0, 0];
@@ -10,6 +9,23 @@ class Entity {
     this.hp   = 0;
     this.class = params.class;
     this.radius = 20;
+
+    // attacking
+    this.atk = 0;
+    this.agl = 5000;
+    this.waitUntilAtk = 0;
+    this.attacking = 0;
+    this.atkAnimationLength = 1000; // ms
+    this.range = 10;
+  }
+
+
+  attack(entity) {
+    if (this.waitUntilAtk <= 0) {
+      entity.receiveDamage(this.atk);
+      this.waitUntilAtk = this.agl;
+      this.attacking = this.atkAnimationLength;
+    }
   }
 
   collidable() {
@@ -44,7 +60,7 @@ class Entity {
   }
 
   inAttackRange(otherEntity) {
-    return (Entity.distance(this.pos, otherEntity.pos) - otherEntity.radius) < this.radius + this.atkDistance;
+    return (Entity.distance(this.pos, otherEntity.pos) - otherEntity.radius) < this.radius + this.range;
   }
 
   // selects random board position while avoiding other Entities
@@ -74,7 +90,17 @@ class Entity {
   }
 
   setDestination() {
-    
+
+  }
+
+  update(elapsed) {
+    this.updateTimers(elapsed);
+  }
+
+  updateTimers(elapsed) {
+    this.attacking -= elapsed;
+    this.waitUntilAtk -= elapsed;
+    // this.waitUntilSwitchDir -= elapsed;
   }
 
   validPos(pos) {

@@ -14,9 +14,9 @@ class Hero extends Entity {
     this.alive = true;
   }
 
-  attack(enemy) {
+  tryAttack(enemy) {
     if (this.inAttackRange(enemy)) {
-      enemy.receiveDamage(this.atk);
+      this.attack(enemy);
       return true;
     } else {
       return false;
@@ -55,6 +55,7 @@ class Hero extends Entity {
   }
 
   update(elapsed) {
+    super.update(elapsed);
     // only move if not at destination
     if (this.destination) {
       this.move(elapsed);

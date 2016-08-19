@@ -13,7 +13,7 @@ const DungeonComp = React.createClass({
 
   attackEnemy(e) {
     let clickedEnemy = this.state.dungeon.findEnemyById(parseInt(e.currentTarget.id));
-    if (this.state.dungeon.hero.attack(clickedEnemy)) {
+    if (this.state.dungeon.hero.tryAttack(clickedEnemy)) {
       e.preventDefault();
     }
   },
