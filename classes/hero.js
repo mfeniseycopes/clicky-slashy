@@ -1,17 +1,10 @@
 import Entity from "./entity";
 
 class Hero extends Entity {
-  constructor(params) {
-    super(params);
-    this.hp   = 100;
-    this.atk  = 10;
-    this.atkDistance = 80;
-    this.spd  = 0.2;
-    this.dir  = [1, 0]; // start facing right
+  constructor(stats, dungeon, id) {
+    super(stats, dungeon, id);
 
     this.pos  = this.dungeon.center();
-    this.destination = null;
-    this.alive = true;
   }
 
   tryAttack(enemy) {

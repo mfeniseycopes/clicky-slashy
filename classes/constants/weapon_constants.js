@@ -1,14 +1,14 @@
 const WeaponConstants = {
 
-
-
   KNIFE: {
     name : "Knife",
     rng : 10,
 
     // component refs
-    wpnImg : "knife-1.png",
-    wpnCSSClass : "knife",
+    refs: {
+      wpnImg : "knife-1.png",
+      wpnCSSClass : "knife"
+    }
   },
 
   SWORD: {

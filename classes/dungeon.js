@@ -1,5 +1,6 @@
 import Enemy from "./enemy";
 import Hero from "./hero";
+import EntityConstants from "./constants/entity_constants";
 
 class Dungeon {
 
@@ -8,13 +9,15 @@ class Dungeon {
 
     this.width = 1200;
     this.height = 800;
+    let dungeon = this;
 
-    this.hero = new Hero({ dungeon: this, id: this.lastEntityId++, class: "hero" });
+    this.hero = new Hero(EntityConstants.HERO, dungeon, this.lastEntityId++);
 
     this.enemies = [];
-    for(let i = 0; i < numEnemies; i++) {
-      this.enemies.push(new Enemy({ dungeon: this, id: this.lastEntityId++, class: "spider" }));
-    }
+    // for(let i = 0; i < numEnemies; i++) {
+      this.enemies.push(new Enemy(EntityConstants.SNAKE, dungeon, this.lastEntityId++));
+      this.enemies.push(new Enemy(EntityConstants.SPIDER, dungeon, this.lastEntityId++));
+    // }
   }
 
   allEntities() {

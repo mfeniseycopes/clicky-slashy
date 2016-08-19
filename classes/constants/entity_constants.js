@@ -3,10 +3,24 @@ import WeaponConstants from "./weapon_constants";
 const EntityConstants = {
 
   HERO: {
+    // base
+    name: "Hero",
+    hp  : 100,
+    atk : 5,
+    spd : 0.2,
+    agl : 1000,
+    wpn : WeaponConstants.KNIFE,
+    rad : 20,
 
+    // component refs
+    refs: {
+      charImg : "cat-hero.png",
+      charCSSClass : "hero"
+    }
   },
 
   DRAGON: {
+
   },
 
   RAT: {
@@ -14,25 +28,39 @@ const EntityConstants = {
   },
 
   SNAKE: {
-    name: "",
-
     // base
+    name: "Snake",
     hp  : 5,
     atk : 1,
     spd : 0.05,
     agl : 5000,
-    rng : 10,
     pcp : 200,
     wpn : WeaponConstants.KNIFE,
     rad : 20,
 
     // component refs
-    charImg : "snake-1.jpg",
-    charCSSClass : "snake"
+    refs: {
+      charImg : "snake-1.png",
+      charCSSClass : "snake"
+    }
   },
 
   SPIDER: {
+    // base
+    name: "Spider",
+    hp  : 5,
+    atk : 1,
+    spd : 0.05,
+    agl : 5000,
+    pcp : 200,
+    wpn : WeaponConstants.KNIFE,
+    rad : 40,
 
+    // component refs
+    refs: {
+      charImg : "spider-1.png",
+      charCSSClass : "spider"
+    }
   }
 
   /*

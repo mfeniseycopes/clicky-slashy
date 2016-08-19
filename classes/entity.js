@@ -1,27 +1,36 @@
 class Entity {
 
-  constructor(params) {
-    this.id = params.id;
-    this.dungeon = params.dungeon;
+  constructor(stats, dungeon, id) {
+    this.id = id;
+    this.dungeon = dungeon;
+
+    // base
+    this.name   = stats.name;
+    this.hp     = stats.hp;
+    this.atk    = stats.atk;
+    this.agl    = stats.agl;
+    this.spd    = stats.spd;
+    this.radius = stats.rad;
+    this.pcp    = stats.pcp;
+    this.wpn    = stats.wpn;
+    this.rng    = stats.wpn.rng;
+
+    // instance
     this.alive = true;
     this.pos = [0, 0];
-
-    this.hp   = 0;
-    this.class = params.class;
-    this.radius = 20;
-
-    // attacking
-    this.atk = 0;
-    this.agl = 5000;
+    this.dir = [0, 0];
     this.waitUntilAtk = 0;
     this.attacking = 0;
     this.atkAnimationLength = 1000; // ms
-    this.range = 10;
+
+    // for react component
+    this.refs = stats.refs;
   }
 
 
   attack(entity) {
     if (this.waitUntilAtk <= 0) {
+      console.log("attack");
       entity.receiveDamage(this.atk);
       this.waitUntilAtk = this.agl;
       this.attacking = this.atkAnimationLength;
@@ -60,7 +69,7 @@ class Entity {
   }
 
   inAttackRange(otherEntity) {
-    return (Entity.distance(this.pos, otherEntity.pos) - otherEntity.radius) < this.radius + this.range;
+    return (Entity.distance(this.pos, otherEntity.pos) - otherEntity.radius) < this.radius + this.rng;
   }
 
   // selects random board position while avoiding other Entities

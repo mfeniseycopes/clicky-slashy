@@ -1,21 +1,12 @@
 import Entity from "./entity";
 
 class Enemy extends Entity {
-  constructor(params) {
-    super(params);
-    this.name = "spider";
-    this.hp   = 5;
-    this.atk  = 1;
-    this.dir  = [0, 0];
-    this.spd  = 0.05;
-    this.alive = true;
-    this.atkDistance = 10;
-    this.agl = 5000;
-    this.waitUntilAtk = 0;
+  constructor(stats, dungeon, id) {
+    super(stats, dungeon, id);
+
     this.waitUntilSwitchDir = 0;
     this.destination = this.randomPos();
-    this.sensoryRange = 200;
-    this.randomOpenPos();
+    this.randomOpenPos(); // sets initial position
   }
 
   hero() {
@@ -24,7 +15,7 @@ class Enemy extends Entity {
 
   move(elapsed) {
 
-    if (Entity.distance(this.pos, this.hero().pos) < this.sensoryRange) {
+    if (Entity.distance(this.pos, this.hero().pos) < this.pcp) {
       this.destination = this.hero().pos;
     }
     else if (this.destination === this.pos || this.waitUntilSwitchDir <= 0) {
