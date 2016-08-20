@@ -21,17 +21,10 @@ const WeaponConstants = {
     rng : ,     // attack distance
 
     // component refs
-    wpnImg : ,      // character image
-    wpnCSSClass : , // set as className of weapon in component
-  }
-
-  STUB: {
-    name : "",
-    rng : ,
-
-    // component refs
-    wpnImg : ,
-    wpnCSSClass : ,
+    refs: {
+      wpnImg : ,      // character image
+      wpnCSSClass : , // set as className of weapon in component
+    }
   }
   */
 

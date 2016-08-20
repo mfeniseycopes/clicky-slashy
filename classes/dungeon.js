@@ -17,6 +17,10 @@ class Dungeon {
     // for(let i = 0; i < numEnemies; i++) {
       this.enemies.push(new Enemy(EntityConstants.SNAKE, dungeon, this.lastEntityId++));
       this.enemies.push(new Enemy(EntityConstants.SPIDER, dungeon, this.lastEntityId++));
+      this.enemies.push(new Enemy(EntityConstants.SNAKE, dungeon, this.lastEntityId++));
+      this.enemies.push(new Enemy(EntityConstants.SPIDER, dungeon, this.lastEntityId++));
+      this.enemies.push(new Enemy(EntityConstants.SNAKE, dungeon, this.lastEntityId++));
+      this.enemies.push(new Enemy(EntityConstants.SPIDER, dungeon, this.lastEntityId++));
     // }
   }
 
