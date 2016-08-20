@@ -3,9 +3,7 @@ import React      from "react";
 import Dungeon    from "../classes/dungeon";
 import Enemy      from "../classes/enemy";
 import Hero       from "../classes/hero";
-import EnemyComp  from "./enemy_comp";
 import EntityComp  from "./entity_comp";
-import HeroComp   from "./hero_comp";
 
 const DungeonComp = React.createClass({
 
@@ -37,9 +35,7 @@ const DungeonComp = React.createClass({
           attacking={enemy.atkTimeRemaining}
           clickHandler={this.enemyClick}
           refs={enemy.refs}
-          wpnRefs={enemy.wpn.refs}
-
-          enemy={enemy}>
+          wpnRefs={enemy.wpn.refs}>
         </EntityComp>
       );
     });
