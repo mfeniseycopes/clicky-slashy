@@ -8,10 +8,13 @@ import HeroComp   from "./hero_comp";
 
 const DungeonComp = React.createClass({
 
-  attackEnemy(e) {
+  enemyClick(e) {
+    e.preventDefault();
     let clickedEnemy = this.state.dungeon.findEnemyById(parseInt(e.currentTarget.id));
-    if (this.state.dungeon.hero.tryAttack(clickedEnemy)) {
-      e.preventDefault();
+
+    if (!this.state.dungeon.hero.attack(clickedEnemy)) {
+      console.log("click-attack: false");
+      this.state.dungeon.hero.setDestination(clickedEnemy.pos);
     }
   },
 
@@ -23,7 +26,7 @@ const DungeonComp = React.createClass({
 
   enemies() {
     return this.state.dungeon.enemies.map((enemy) => {
-      return <EnemyComp key={enemy.id} enemy={enemy} attackEnemy={ this.attackEnemy }/>;
+      return <EnemyComp key={enemy.id} enemy={enemy} attackEnemy={ this.enemyClick }/>;
     });
   },
 
@@ -31,7 +34,7 @@ const DungeonComp = React.createClass({
     let enemies = this.enemies();
 
     return (
-      <div className="dungeon" onClick={this.moveHero}>
+      <div className="dungeon" onClick={this.dungeonClick}>
         { enemies }
         <HeroComp hero={this.state.dungeon.hero}/>
       </div>
@@ -42,12 +45,12 @@ const DungeonComp = React.createClass({
     return { lastUpdate: 0, dungeon: new Dungeon(1)};
   },
 
-  moveHero(e) {
+  dungeonClick(e) {
     e.preventDefault();
 
     let x = e.clientX - e.currentTarget.clientLeft - e.currentTarget.offsetLeft;
     let y = e.clientY - e.currentTarget.clientTop - e.currentTarget.offsetTop;
-    this.state.dungeon.hero.moveToPos([x, y]);
+    this.state.dungeon.hero.setDestination([x, y]);
   },
 
   startGame() {

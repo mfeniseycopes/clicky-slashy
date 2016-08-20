@@ -7,15 +7,6 @@ class Hero extends Entity {
     this.pos  = this.dungeon.center();
   }
 
-  tryAttack(enemy) {
-    if (this.inAttackRange(enemy)) {
-      this.attack(enemy);
-      return true;
-    } else {
-      return false;
-    }
-  }
-
   move(elapsed) {
     let moveX = this.dir[0] * this.spd * elapsed;
     let moveY = this.dir[1] * this.spd * elapsed;
@@ -35,9 +26,10 @@ class Hero extends Entity {
     }
   }
 
-  moveToPos(pos) {
+  setDestination(pos) {
 
-    if (this.validPos(pos)) {
+    if (this.inBounds(pos)) {
+
       this.destination = pos;
 
       let norm = Entity.distance(this.destination, this.pos);

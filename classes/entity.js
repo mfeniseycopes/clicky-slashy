@@ -29,12 +29,15 @@ class Entity {
 
 
   attack(entity) {
-    if (this.waitUntilAtk <= 0) {
-      console.log("attack");
+    if (this.waitUntilAtk <= 0 && this.inAttackRange(entity)) {
+      console.log("attack: true");
       entity.receiveDamage(this.atk);
       this.waitUntilAtk = this.agl;
       this.attacking = this.atkAnimationLength;
+      return true;
     }
+    console.log("attack: false");
+    return false;
   }
 
   collidable() {
@@ -70,6 +73,10 @@ class Entity {
 
   inAttackRange(otherEntity) {
     return (Entity.distance(this.pos, otherEntity.pos) - otherEntity.radius) < this.radius + this.rng;
+  }
+
+  inBounds(pos) {
+    return (pos[0] > this.radius) && (pos[1] <= (this.dungeon.width - this.radius));
   }
 
   // selects random board position while avoiding other Entities

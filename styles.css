@@ -31,7 +31,8 @@ h2 {
 .dungeon {
   width: 1200px;
   height: 800px;
-  background-color: #a38d64;
+  /*background-color: #a38d64;*/
+  background: url("./images/background.jpg");
   border: 10px dotted black;
   position: relative;
   box-sizing: content-box;
@@ -41,10 +42,12 @@ h2 {
 
 .enemy {
   color: red;
+  user-select: none;
 }
 
 .hero {
   color: black;
+  user-select: none;
 }
 
 .entity {
@@ -54,6 +57,7 @@ h2 {
   line-height: 25px;
   font-size: 20px;
   text-align: center;
+  user-select: none;
 }
 
 .entity > .fit-image {
@@ -63,6 +67,7 @@ h2 {
 }
 
 .weapon {
+  user-select: none;
   transform: rotate(45deg);
   transform-origin: right;
   position: absolute;
