@@ -1,23 +1,20 @@
 {
   "name": "clicky-slashy",
+  "author": "Meagan Fenisey_Copes",
   "version": "1.0.0",
+  "homepage": "https://github.com/mfeniseycopes/clicky-slashy#readme",
   "description": "## MVP",
-  "main": "index.js",
-  "scripts": {
-    "webpack": "webpack --watch",
-    "postinstall": "./node_modules/.bin/webpack"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mfeniseycopes/clicky-slashy.git"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "bugs": {
     "url": "https://github.com/mfeniseycopes/clicky-slashy/issues"
   },
-  "homepage": "https://github.com/mfeniseycopes/clicky-slashy#readme",
+  "main": "index.js",
+  "keywords": [],
+  "license": "ISC",
+
   "dependencies": {
     "babel-core": "^6.13.2",
     "babel-loader": "^6.2.5",
@@ -28,7 +25,11 @@
     "webpack": "^1.13.1"
   },
   "engines": {
-   "node": "4.2.6",
-   "npm": "3.5.2"
+    "node": "4.2.6",
+    "npm": "3.5.2"
   },
+  "scripts": {
+    "webpack": "webpack --watch",
+    "postinstall": "./node_modules/.bin/webpack"
+  }
 }
