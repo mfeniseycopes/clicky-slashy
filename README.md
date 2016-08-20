@@ -37,3 +37,5 @@ Create a hit point system for our brave hero and enemies. Player will have highe
 ### Day 3 - much polish, game looks not horrendous, wow
 
 Make animations for movement, attack and death. Find a dungeony image or texture to use as the dungeon background. Create "New Game" screen on game load and "Game Over" screen after the death of our brave hero.
+
+## deployment is hard
