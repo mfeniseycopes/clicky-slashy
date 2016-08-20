@@ -40,6 +40,10 @@ h2 {
   margin: 0 auto;
 }
 
+.dead {
+  opacity: 0.6;
+}
+
 .enemy {
   color: red;
   user-select: none;

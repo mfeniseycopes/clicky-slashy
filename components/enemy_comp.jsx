@@ -14,13 +14,21 @@ const EnemyComp = React.createClass({
 
 
     return (
-      <div className="enemy entity" id={this.props.enemy.id} style={divStyle} onClick={ this.props.enemy.alive ? this.props.attackEnemy : null } draggable="false" >
+      <div className={this.enemyClassNames()} id={this.props.enemy.id} style={divStyle} onClick={ this.props.enemy.alive ? this.props.attackEnemy : null } draggable="false" >
         <img className="fit-image" draggable="false"
           src={`./images/${this.props.enemy.refs.charImg}`} />
         <img className={this.weaponClassNames()} draggable="false"
           src={`./images/${this.props.enemy.wpn.refs.wpnImg}`} />
       </div>
     );
+  },
+
+  enemyClassNames() {
+    let classNames = "enemy entity";
+    if (!this.props.enemy.alive) {
+      classNames += " dead";
+    }
+    return classNames;
   },
 
   weaponClassNames() {
