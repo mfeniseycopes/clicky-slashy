@@ -20,7 +20,8 @@ class Entity {
     this.pos = [0, 0];
     this.dir = [0, 0];
     this.waitUntilAtk = 0;
-    this.attacking = 0;
+    this.atkTarget = 0;
+    this.atkTimeRemaining = 0;
     this.atkAnimationLength = 1000; // ms
 
     // for react component
@@ -30,13 +31,12 @@ class Entity {
 
   attack(entity) {
     if (this.waitUntilAtk <= 0 && this.inAttackRange(entity)) {
-      console.log("attack: true");
-      entity.receiveDamage(this.atk);
+      // entity.receiveDamage(this.atk);
+      this.atkTarget = entity;
       this.waitUntilAtk = this.agl;
-      this.attacking = this.atkAnimationLength;
+      this.atkTimeRemaining = this.atkAnimationLength;
       return true;
     }
-    console.log("attack: false");
     return false;
   }
 
@@ -114,8 +114,13 @@ class Entity {
   }
 
   updateTimers(elapsed) {
-    this.attacking -= elapsed;
+    this.atkTimeRemaining -= elapsed;
     this.waitUntilAtk -= elapsed;
+
+    if (this.atkTimeRemaining <= 0 && this.atkTarget) {
+      this.atkTarget.receiveDamage(this.atk);
+      this.atkTarget = null;
+    }
     // this.waitUntilSwitchDir -= elapsed;
   }
 

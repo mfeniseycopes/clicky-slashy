@@ -31,7 +31,7 @@ const HeroComp = React.createClass({
 
   weaponClassNames() {
     let classNames = "weapon";
-    if (this.props.hero.attacking > 0) {
+    if (this.props.hero.atkTimeRemaining > 0) {
       classNames += " attacking";
     }
     return classNames;
