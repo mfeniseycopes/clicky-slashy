@@ -4,6 +4,7 @@ import Dungeon    from "../classes/dungeon";
 import Enemy      from "../classes/enemy";
 import Hero       from "../classes/hero";
 import EnemyComp  from "./enemy_comp";
+import EntityComp  from "./entity_comp";
 import HeroComp   from "./hero_comp";
 
 const DungeonComp = React.createClass({
@@ -26,17 +27,50 @@ const DungeonComp = React.createClass({
 
   enemies() {
     return this.state.dungeon.enemies.map((enemy) => {
-      return <EnemyComp key={enemy.id} enemy={enemy} attackEnemy={ this.enemyClick }/>;
+      return (
+        <EntityComp
+          key={enemy.id}
+          id={enemy.id}
+          pos={enemy.pos}
+          radius={enemy.radius}
+          alive={enemy.alive}
+          attacking={enemy.atkTimeRemaining}
+          clickHandler={this.enemyClick}
+          refs={enemy.refs}
+          wpnRefs={enemy.wpn.refs}
+
+          enemy={enemy}>
+        </EntityComp>
+      );
     });
+  },
+
+  hero() {
+    return <EntityComp
+      key={this.state.dungeon.hero.id}
+      id={this.state.dungeon.hero.id}
+      pos={this.state.dungeon.hero.pos}
+      radius={this.state.dungeon.hero.radius}
+      alive={this.state.dungeon.hero.alive}
+      attacking={this.state.dungeon.hero.atkTimeRemaining}
+      clickHandler={this.heroClick}
+      refs={this.state.dungeon.hero.refs}
+      wpnRefs={this.state.dungeon.hero.wpn.refs}>
+    </EntityComp>;
+  },
+
+  heroClick() {
+    // doesn't need to do anything
   },
 
   render() {
     let enemies = this.enemies();
+    let hero    = this.hero();
 
     return (
       <div className="dungeon" onClick={this.dungeonClick}>
         { enemies }
-        <HeroComp hero={this.state.dungeon.hero}/>
+        { hero }
       </div>
     );
   },

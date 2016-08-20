@@ -1,8 +1,7 @@
 // react
 import React    from "react";
-import Enemy from "../classes/enemy";
 
-const EnemyComp = React.createClass({
+const EntityComp = React.createClass({
 
   render() {
     let divStyle = {
@@ -14,7 +13,7 @@ const EnemyComp = React.createClass({
 
 
     return (
-      <div className={this.enemyClassNames()} id={this.props.id} style={divStyle} onClick={ this.props.alive ? this.props.clickHandler : null } draggable="false" >
+      <div className={this.entityClassNames()} id={this.props.id} style={divStyle} onClick={ this.props.alive ? this.props.clickHandler : null } draggable="false" >
         <img className="fit-image" draggable="false"
           src={`./images/${this.props.refs.charImg}`} />
         <img className={this.weaponClassNames()} draggable="false"
@@ -23,8 +22,8 @@ const EnemyComp = React.createClass({
     );
   },
 
-  enemyClassNames() {
-    let classNames = "enemy entity";
+  entityClassNames() {
+    let classNames = "entity";
     if (!this.props.alive) {
       classNames += " dead";
     }
@@ -41,4 +40,4 @@ const EnemyComp = React.createClass({
 
 });
 
-module.exports = EnemyComp;
+module.exports = EntityComp;
