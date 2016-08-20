@@ -49,25 +49,22 @@ h2 {
   user-select: none;
 }
 
-.hero {
-  color: black;
-  user-select: none;
-}
+
+
 
 .entity {
-  /*max-width: 50px;*/
-  /*max-height: 50px;*/
   position: absolute;
   line-height: 25px;
   font-size: 20px;
   text-align: center;
   user-select: none;
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
 .entity > .fit-image {
   height: 100%;
   width: 100%;
-  object-fit: cover;
 }
 
 .weapon {
@@ -77,13 +74,14 @@ h2 {
   position: absolute;
   top: 20px;
   left: -20px;
-  height: 10px;
-  width: auto;
   margin: -10px;
   z-index: 100;
   transition-property: all;
   transition-duration: .5s;
   transition-timing-function: ease-in-out;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .weapon.attacking {
@@ -92,3 +90,25 @@ h2 {
   transition-duration: .5s;
   transition-timing-function: ease-in-out;
 }
+
+/* entity classes */
+
+  .hero {
+    background-image: url("./images/cat-hero.png");
+  }
+
+  .snake {
+    background-image: url("./images/snake-1.png");
+  }
+
+  .spider {
+    background-image: url("./images/spider-1.png");
+  }
+
+/* weapon classes */
+
+  .knife {
+    background-image: url("./images/knife-1.png");
+    height: 10px;
+    width: 50px;
+  }
