@@ -97,8 +97,8 @@ class Entity {
   // selects random board position
   randomPos() {
     let pos = [
-      Math.floor(Math.random() * (this.dungeon.width - this.radius)),
-      Math.floor(Math.random() * (this.dungeon.height - this.radius))
+      Math.floor(Math.random() * (this.dungeon.width - 2 * this.radius) + this.radius),
+      Math.floor(Math.random() * (this.dungeon.height - 2 * this.radius) + this.radius)
     ];
 
     return pos;

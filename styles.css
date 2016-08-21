@@ -33,11 +33,12 @@ h2 {
   height: 800px;
   /*background-color: #a38d64;*/
   background: url("./images/background.jpg");
-  border: 10px dotted black;
+  border: 10px ridge #767065;
   position: relative;
   box-sizing: content-box;
   cursor: crosshair;
   margin: 0 auto;
+  /*border-image: url("./images/border.jpg") 100 round;*/
 }
 
 .dead {
@@ -48,9 +49,6 @@ h2 {
   color: red;
   user-select: none;
 }
-
-
-
 
 .entity {
   position: absolute;
