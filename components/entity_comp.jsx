@@ -13,7 +13,6 @@ const EntityComp = React.createClass({
   },
 
   charStyle() {
-    // debugger
     let rotation = Math.acos([-1] * this.props.dir[0]);
     let scaleX = 1;
     let scaleY = 1;

@@ -1,3 +1,5 @@
+import GameStore from'../stores/game_store';
+
 class Entity {
 
   constructor(stats, dungeon, id) {
@@ -105,6 +107,9 @@ class Entity {
   }
 
   receiveDamage(damage) {
+    console.log(damage);
+    GameStore.newEvent(this.name, damage);
+
     this.hp -= damage;
     if (this.hp <= 0) {
       this.alive = false;

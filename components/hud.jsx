@@ -1,7 +1,16 @@
 // react
 import React    from "react";
+import GameStore from'../stores/game_store';
 
 const Hud = React.createClass({
+
+  componentDidMount() {
+    this.gameListener = GameStore.registerListener(this.update);
+  },
+
+  getInitialState() {
+    return { hero: this.props.hero, events: [] };
+  },
 
   render() {
 
@@ -10,31 +19,33 @@ const Hud = React.createClass({
         <div className="health">
           <ul>Hero
             <li>
-              HP: 20/50
+              HP: {this.state.hero.hp}/100
             </li>
             <li>
-              ATK: 5
+              ATK: {this.state.hero.atk}
             </li>
             <li>
-              SPD: 2
+              SPD: {this.state.hero.spd}
             </li>
           </ul>
         </div>
         <div className="events">
           <ul>
-            <li>
-              Spider take 5 dmg
-            </li>
-            <li>
-              Spider take 5 dmg
-            </li>
-            <li>
-              Spider take 5 dmg
-            </li>
+            {
+              this.state.events.map((event, key) => {
+                return (
+                  <li key={key}>{event}</li>
+                );
+              })
+            }
           </ul>
         </div>
       </div>
     );
+  },
+
+  update() {
+    this.setState({ hero: GameStore.hero(), events: GameStore.events() });
   }
 
 });

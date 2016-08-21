@@ -1,4 +1,5 @@
 import Entity from "./entity";
+import GameStore from'../stores/game_store';
 
 class Hero extends Entity {
   constructor(stats, dungeon, id) {
@@ -28,6 +29,11 @@ class Hero extends Entity {
     if (this.destination && Entity.distance(this.destination, this.pos) < 2) {
       this.destination = null;
     }
+  }
+
+  receiveDamage(damage) {
+    super.receiveDamage(damage);
+    GameStore.updateHero(this);
   }
 
   setDestination(pos) {

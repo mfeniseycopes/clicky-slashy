@@ -7,14 +7,15 @@ import Hud         from "./hud";
 const App = React.createClass({
 
   getInitialState() {
-    return { game: new Game() };
+    let game = new Game();
+    return { game: game, hero: game.dungeon.hero };
   },
 
   render() {
     return (
       <div>
         <DungeonComp dungeon={this.state.game.dungeon}/>
-        <Hud />
+        <Hud hero={this.state.hero}/>
       </div>
     );
   }
