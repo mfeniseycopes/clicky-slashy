@@ -35,7 +35,8 @@ const DungeonComp = React.createClass({
           atkTimeRemaining={enemy.atkTimeRemaining}
           clickHandler={this.enemyClick}
           refs={enemy.refs}
-          wpnRefs={enemy.wpn.refs}>
+          wpnRefs={enemy.wpn.refs}
+          dir={enemy.dir}>
         </EntityComp>
       );
     });
@@ -51,7 +52,8 @@ const DungeonComp = React.createClass({
       atkTimeRemaining={this.state.dungeon.hero.atkTimeRemaining}
       clickHandler={this.heroClick}
       refs={this.state.dungeon.hero.refs}
-      wpnRefs={this.state.dungeon.hero.wpn.refs}>
+      wpnRefs={this.state.dungeon.hero.wpn.refs}
+      dir={this.state.dungeon.hero.dir}>
     </EntityComp>;
   },
 

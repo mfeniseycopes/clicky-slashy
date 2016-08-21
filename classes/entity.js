@@ -18,7 +18,7 @@ class Entity {
     // instance
     this.alive = true;
     this.pos = [0, 0];
-    this.dir = [0, 0];
+    this.dir = [-1, 0];
     this.waitUntilAtk = 0;
     this.atkTarget = 0;
     this.atkTimeRemaining = 0;
