@@ -14,10 +14,16 @@ class Dungeon {
 
     this.hero = new Hero(EntityConstants.HERO, dungeon, this.lastEntityId++);
 
-    this.enemies = [];
+    this.aliveEnemies = [];
+    this.deadEnemies = [];
     enemyTypes.forEach((type) => {
-      this.enemies.push(new Enemy(EntityConstants[type], dungeon, this.lastEntityId++));
+      this.aliveEnemies.push(new Enemy(EntityConstants[type], dungeon, this.lastEntityId++));
     });
+  }
+
+
+  aliveEntities() {
+    return this.aliveEnemies.concat([this.hero]);
   }
 
   allEntities() {
@@ -30,10 +36,27 @@ class Dungeon {
     return [this.width / 2, this.height / 2];
   }
 
+  cleared() {
+    return aliveEnemies.length === 0;
+  }
+
+  enemies() {
+    return this.aliveEnemies.concat(this.deadEnemies);
+  }
+
+  entityDied(id) {
+    for (let i = 0; i < this.aliveEnemies.length; i++) {
+      if (this.aliveEnemies[i].id === id) {
+        this.deadEnemies.push(this.aliveEnemies.splice(i, 1)[0]);
+        break;
+      }
+    }
+  }
+
   findEnemyById(id) {
-    for (let i = 0; i < this.enemies.length; i++) {
-      if (this.enemies[i].id === id) {
-        return this.enemies[i];
+    for (let i = 0; i < this.aliveEnemies.length; i++) {
+      if (this.aliveEnemies[i].id === id) {
+        return this.aliveEnemies[i];
       }
     }
 
@@ -41,7 +64,7 @@ class Dungeon {
   }
 
   update(elapsed) {
-    this.allEntities().forEach((entity) => {
+    this.aliveEntities().forEach((entity) => {
       if (entity.alive) {
         entity.update(elapsed);
       }

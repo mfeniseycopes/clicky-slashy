@@ -30,7 +30,7 @@ const DungeonComp = React.createClass({
   },
 
   enemies() {
-    return this.props.dungeon.enemies.map((enemy) => {
+    return this.props.dungeon.enemies().map((enemy) => {
       return (
         <EntityComp
           key={enemy.id}

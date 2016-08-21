@@ -54,7 +54,7 @@ class Entity {
 
   // determine if entity is colliding with any other entity on board
   colliding() {
-    let entities = this.dungeon.allEntities();
+    let entities = this.dungeon.aliveEntities();
 
     for (let i = 0; i < entities.length; i++) {
       if (entities[i].collidable() && this.collidingWith(entities[i])) {
@@ -77,6 +77,11 @@ class Entity {
     else {
       return false;
     }
+  }
+
+  die() {
+    this.alive = false;
+    this.dungeon.entityDied(this.id);
   }
 
   inAttackRange(otherEntity) {
@@ -112,7 +117,7 @@ class Entity {
 
     this.hp -= damage;
     if (this.hp <= 0) {
-      this.alive = false;
+      this.die();
     }
   }
 
