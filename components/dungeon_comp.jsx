@@ -9,10 +9,14 @@ const DungeonComp = React.createClass({
 
   enemyClick(e) {
     e.preventDefault();
+    e.stopPropagation();
+
     let clickedEnemy = this.state.dungeon.findEnemyById(parseInt(e.currentTarget.id));
 
-    if (!this.state.dungeon.hero.attack(clickedEnemy)) {
-      console.log("click-attack: false");
+    if (this.state.dungeon.hero.attack(clickedEnemy)) {
+      this.state.dungeon.hero.clearDestination();
+    }
+    else {
       this.state.dungeon.hero.setDestination(clickedEnemy.pos);
     }
   },

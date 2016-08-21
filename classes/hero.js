@@ -7,6 +7,10 @@ class Hero extends Entity {
     this.pos  = this.dungeon.center();
   }
 
+  clearDestination() {
+    this.destination = null;
+  }
+
   move(elapsed) {
     let moveX = this.dir[0] * this.spd * elapsed;
     let moveY = this.dir[1] * this.spd * elapsed;
@@ -32,17 +36,14 @@ class Hero extends Entity {
 
       this.destination = pos;
 
-      let norm = Entity.distance(this.destination, this.pos);
-
-      this.dir[0] = (this.destination[0] - this.pos[0]) / norm;
-      this.dir[1] = (this.destination[1] - this.pos[1]) / norm;
+      this.updateDir();
     }
   }
 
   update(elapsed) {
     super.update(elapsed);
     // only move if not at destination
-    if (this.destination) {
+    if (this.destination !== null) {
       this.move(elapsed);
     }
   }

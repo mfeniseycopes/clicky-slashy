@@ -23,6 +23,7 @@ class Entity {
     this.atkTarget = 0;
     this.atkTimeRemaining = 0;
     this.atkAnimationLength = 1000; // ms
+    this.destination = null;
 
     // for react component
     this.refs = stats.refs;
@@ -31,6 +32,11 @@ class Entity {
 
   attack(entity) {
     if (this.waitUntilAtk <= 0 && this.inAttackRange(entity)) {
+      // face entity
+      let norm = Entity.distance(entity.pos, this.pos);
+      this.dir[0] = (entity.pos[0] - this.pos[0]) / norm;
+      this.dir[1] = (entity.pos[1] - this.pos[1]) / norm;
+
       // entity.receiveDamage(this.atk);
       this.atkTarget = entity;
       this.waitUntilAtk = this.agl;
@@ -111,6 +117,13 @@ class Entity {
 
   update(elapsed) {
     this.updateTimers(elapsed);
+  }
+
+  updateDir() {
+    let norm = Entity.distance(this.destination, this.pos);
+
+    this.dir[0] = (this.destination[0] - this.pos[0]) / norm;
+    this.dir[1] = (this.destination[1] - this.pos[1]) / norm;
   }
 
   updateTimers(elapsed) {
