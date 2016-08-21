@@ -13,7 +13,7 @@ const App = React.createClass({
   render() {
     return (
       <div>
-        <DungeonComp />
+        <DungeonComp dungeon={this.state.game.dungeon}/>
         <Hud />
       </div>
     );

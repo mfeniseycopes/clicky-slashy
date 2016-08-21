@@ -13,13 +13,13 @@ const DungeonComp = React.createClass({
     e.preventDefault();
     e.stopPropagation();
 
-    let clickedEnemy = this.state.dungeon.findEnemyById(parseInt(e.currentTarget.id));
+    let clickedEnemy = this.props.dungeon.findEnemyById(parseInt(e.currentTarget.id));
 
-    if (this.state.dungeon.hero.attack(clickedEnemy)) {
-      this.state.dungeon.hero.clearDestination();
+    if (this.props.dungeon.hero.attack(clickedEnemy)) {
+      this.props.dungeon.hero.clearDestination();
     }
     else {
-      this.state.dungeon.hero.setDestination(clickedEnemy.pos);
+      this.props.dungeon.hero.setDestination(clickedEnemy.pos);
     }
   },
 
@@ -30,7 +30,7 @@ const DungeonComp = React.createClass({
   },
 
   enemies() {
-    return this.state.dungeon.enemies.map((enemy) => {
+    return this.props.dungeon.enemies.map((enemy) => {
       return (
         <EntityComp
           key={enemy.id}
@@ -50,16 +50,16 @@ const DungeonComp = React.createClass({
 
   hero() {
     return <EntityComp
-      key={this.state.dungeon.hero.id}
-      id={this.state.dungeon.hero.id}
-      pos={this.state.dungeon.hero.pos}
-      radius={this.state.dungeon.hero.radius}
-      alive={this.state.dungeon.hero.alive}
-      atkTimeRemaining={this.state.dungeon.hero.atkTimeRemaining}
+      key={this.props.dungeon.hero.id}
+      id={this.props.dungeon.hero.id}
+      pos={this.props.dungeon.hero.pos}
+      radius={this.props.dungeon.hero.radius}
+      alive={this.props.dungeon.hero.alive}
+      atkTimeRemaining={this.props.dungeon.hero.atkTimeRemaining}
       clickHandler={this.heroClick}
-      refs={this.state.dungeon.hero.refs}
-      wpnRefs={this.state.dungeon.hero.wpn.refs}
-      dir={this.state.dungeon.hero.dir}>
+      refs={this.props.dungeon.hero.refs}
+      wpnRefs={this.props.dungeon.hero.wpn.refs}
+      dir={this.props.dungeon.hero.dir}>
     </EntityComp>;
   },
 
@@ -80,7 +80,7 @@ const DungeonComp = React.createClass({
   },
 
   getInitialState() {
-    return { lastUpdate: 0, dungeon: new Dungeon(LevelConstants[0].enemies)};
+    return { lastUpdate: 0 };
   },
 
   dungeonClick(e) {
@@ -88,7 +88,7 @@ const DungeonComp = React.createClass({
 
     let x = e.clientX - e.currentTarget.clientLeft - e.currentTarget.offsetLeft;
     let y = e.clientY - e.currentTarget.clientTop - e.currentTarget.offsetTop;
-    this.state.dungeon.hero.setDestination([x, y]);
+    this.props.dungeon.hero.setDestination([x, y]);
   },
 
   startGame() {
@@ -99,7 +99,7 @@ const DungeonComp = React.createClass({
 
     let elapsed = (timestamp - this.state.lastUpdate);
 
-    this.state.dungeon.update(elapsed);
+    this.props.dungeon.update(elapsed);
 
     this.setState({ lastUpdate: timestamp, dungeon: this.state.dungeon });
 

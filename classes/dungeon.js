@@ -17,11 +17,6 @@ class Dungeon {
     this.enemies = [];
     enemyTypes.forEach((type) => {
       this.enemies.push(new Enemy(EntityConstants[type], dungeon, this.lastEntityId++));
-      // this.enemies.push(new Enemy(EntityConstants.SPIDER, dungeon, this.lastEntityId++));
-      // this.enemies.push(new Enemy(EntityConstants.SNAKE, dungeon, this.lastEntityId++));
-      // this.enemies.push(new Enemy(EntityConstants.SPIDER, dungeon, this.lastEntityId++));
-      // this.enemies.push(new Enemy(EntityConstants.SNAKE, dungeon, this.lastEntityId++));
-      // this.enemies.push(new Enemy(EntityConstants.SPIDER, dungeon, this.lastEntityId++));
     });
   }
 

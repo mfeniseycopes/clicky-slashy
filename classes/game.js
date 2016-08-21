@@ -8,7 +8,7 @@ class Game {
 
   constructor(level = 0) {
     this.level = level;
-    this.dungeon = new Dungeon(LevelConstants[this.level]);
+    this.dungeon = new Dungeon(LevelConstants[this.level].enemies);
   }
 
 }
