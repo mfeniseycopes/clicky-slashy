@@ -4,6 +4,8 @@ import Dungeon    from "../classes/dungeon";
 import Enemy      from "../classes/enemy";
 import Hero       from "../classes/hero";
 import EntityComp  from "./entity_comp";
+import LevelConstants from "../classes/constants/level_constants";
+
 
 const DungeonComp = React.createClass({
 
@@ -78,7 +80,7 @@ const DungeonComp = React.createClass({
   },
 
   getInitialState() {
-    return { lastUpdate: 0, dungeon: new Dungeon(1)};
+    return { lastUpdate: 0, dungeon: new Dungeon(LevelConstants[0].enemies)};
   },
 
   dungeonClick(e) {

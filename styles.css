@@ -41,6 +41,11 @@ h2 {
   /*border-image: url("./images/border.jpg") 100 round;*/
 }
 
+.health {
+  font-size: 20px;
+  color: red;
+}
+
 .dead {
   opacity: 0.6;
 }

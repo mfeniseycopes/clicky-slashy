@@ -1,10 +1,11 @@
 import Enemy from "./enemy";
 import Hero from "./hero";
 import EntityConstants from "./constants/entity_constants";
+import LevelConstants from "./constants/level_constants";
 
 class Dungeon {
 
-  constructor(numEnemies) {
+  constructor(enemyTypes) {
     this.lastEntityId = 0;
 
     this.width = 1200;
@@ -14,14 +15,14 @@ class Dungeon {
     this.hero = new Hero(EntityConstants.HERO, dungeon, this.lastEntityId++);
 
     this.enemies = [];
-    // for(let i = 0; i < numEnemies; i++) {
-      this.enemies.push(new Enemy(EntityConstants.SNAKE, dungeon, this.lastEntityId++));
-      this.enemies.push(new Enemy(EntityConstants.SPIDER, dungeon, this.lastEntityId++));
-      this.enemies.push(new Enemy(EntityConstants.SNAKE, dungeon, this.lastEntityId++));
-      this.enemies.push(new Enemy(EntityConstants.SPIDER, dungeon, this.lastEntityId++));
-      this.enemies.push(new Enemy(EntityConstants.SNAKE, dungeon, this.lastEntityId++));
-      this.enemies.push(new Enemy(EntityConstants.SPIDER, dungeon, this.lastEntityId++));
-    // }
+    enemyTypes.forEach((type) => {
+      this.enemies.push(new Enemy(EntityConstants[type], dungeon, this.lastEntityId++));
+      // this.enemies.push(new Enemy(EntityConstants.SPIDER, dungeon, this.lastEntityId++));
+      // this.enemies.push(new Enemy(EntityConstants.SNAKE, dungeon, this.lastEntityId++));
+      // this.enemies.push(new Enemy(EntityConstants.SPIDER, dungeon, this.lastEntityId++));
+      // this.enemies.push(new Enemy(EntityConstants.SNAKE, dungeon, this.lastEntityId++));
+      // this.enemies.push(new Enemy(EntityConstants.SPIDER, dungeon, this.lastEntityId++));
+    });
   }
 
   allEntities() {
