@@ -18,7 +18,7 @@ class Enemy extends Entity {
     if (Entity.distance(this.pos, this.hero().pos) < this.pcp) {
       this.destination = this.hero().pos;
     }
-    else if (this.destination === this.pos || this.waitUntilSwitchDir <= 0) {
+    else if (Entity.distance(this.destination, this.pos) < 5 || this.waitUntilSwitchDir <= 0) {
       this.destination = this.randomPos();
       this.waitUntilSwitchDir = this.agl;
     }
