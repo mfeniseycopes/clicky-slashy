@@ -24,7 +24,21 @@ const EntityConstants = {
   },
 
   RAT: {
+    // base
+    name: "Rat",
+    hp  : 5,
+    atk : 1,
+    spd : 0.05,
+    agl : 5000,
+    pcp : 200,
+    wpn : WeaponConstants.KNIFE,
+    rad : 50,
 
+    // component refs
+    refs: {
+      charImg : "snake-1.png",
+      charCSSClass : "snake"
+    }
   },
 
   SNAKE: {
@@ -36,7 +50,7 @@ const EntityConstants = {
     agl : 5000,
     pcp : 200,
     wpn : WeaponConstants.KNIFE,
-    rad : 20,
+    rad : 50,
 
     // component refs
     refs: {
@@ -54,7 +68,7 @@ const EntityConstants = {
     agl : 5000,
     pcp : 200,
     wpn : WeaponConstants.KNIFE,
-    rad : 40,
+    rad : 60,
 
     // component refs
     refs: {
