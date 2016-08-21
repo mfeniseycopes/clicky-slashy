@@ -5,19 +5,20 @@ import LevelConstants from "./constants/level_constants";
 
 class Dungeon {
 
-  constructor(enemyTypes) {
+  constructor(level) {
     this.lastEntityId = 0;
 
     this.width = 1200;
     this.height = 800;
-    let dungeon = this;
+    this.level = level;
 
-    this.hero = new Hero(EntityConstants.HERO, dungeon, this.lastEntityId++);
+    this.hero = new Hero(EntityConstants.HERO, this, this.lastEntityId++);
 
     this.aliveEnemies = [];
     this.deadEnemies = [];
-    enemyTypes.forEach((type) => {
-      this.aliveEnemies.push(new Enemy(EntityConstants[type], dungeon, this.lastEntityId++));
+
+    LevelConstants[level].enemies.forEach((type) => {
+      this.aliveEnemies.push(new Enemy(EntityConstants[type], this, this.lastEntityId++));
     });
   }
 
@@ -37,7 +38,7 @@ class Dungeon {
   }
 
   cleared() {
-    return aliveEnemies.length === 0;
+    return this.aliveEnemies.length === 0;
   }
 
   enemies() {
@@ -63,11 +64,13 @@ class Dungeon {
     return null;
   }
 
+  heroKilled() {
+    return !this.hero.alive;
+  }
+
   update(elapsed) {
     this.aliveEntities().forEach((entity) => {
-      if (entity.alive) {
-        entity.update(elapsed);
-      }
+      entity.update(elapsed);
     });
   }
 

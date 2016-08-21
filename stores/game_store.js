@@ -1,18 +1,24 @@
 let _hero = {};
 let _events = ["", "", "", "", ""];
 let _eventIdx = 0;
-let _listeners = [];
+let _listeners = {};
+let _counter = 0;
 
 // project
 const GameStore = {
 
   registerListener(listener) {
-    _listeners.push(listener);
+    _listeners[_counter] = listener;
+    return _counter++;
+  },
+
+  removeListener(id) {
+    delete _listeners[id];
   },
 
   invokeListeners() {
-    _listeners.forEach((listener) => {
-      listener();
+    Object.keys(_listeners).map((id) => {
+      _listeners[id]();
     });
   },
 

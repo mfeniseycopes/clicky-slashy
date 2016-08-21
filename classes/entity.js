@@ -112,17 +112,12 @@ class Entity {
   }
 
   receiveDamage(damage) {
-    console.log(damage);
     GameStore.newEvent(this.name, damage);
 
     this.hp -= damage;
     if (this.hp <= 0) {
       this.die();
     }
-  }
-
-  setDestination() {
-
   }
 
   update(elapsed) {

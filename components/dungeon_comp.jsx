@@ -6,8 +6,29 @@ import Hero       from "../classes/hero";
 import EntityComp  from "./entity_comp";
 import LevelConstants from "../classes/constants/level_constants";
 
+let _animationRequestId;
 
 const DungeonComp = React.createClass({
+
+  componentDidMount() {
+    _animationRequestId = requestAnimationFrame(this.update);
+  },
+
+  componentWillUnmount() {
+    cancelAnimationFrame(_animationRequestId);
+  },
+
+  componentWillReceiveProps(newProps) {
+    debugger
+  },
+
+  dungeonClick(e) {
+    e.preventDefault();
+
+    let x = e.clientX - e.currentTarget.clientLeft - e.currentTarget.offsetLeft;
+    let y = e.clientY - e.currentTarget.clientTop - e.currentTarget.offsetTop;
+    this.props.dungeon.hero.setDestination([x, y]);
+  },
 
   enemyClick(e) {
     e.preventDefault();
@@ -21,12 +42,6 @@ const DungeonComp = React.createClass({
     else {
       this.props.dungeon.hero.setDestination(clickedEnemy.pos);
     }
-  },
-
-  componentDidMount() {
-    this.startGame();
-
-    requestAnimationFrame(this.update);
   },
 
   enemies() {
@@ -46,6 +61,10 @@ const DungeonComp = React.createClass({
         </EntityComp>
       );
     });
+  },
+
+  getInitialState() {
+    return { lastUpdate: 0 };
   },
 
   hero() {
@@ -79,22 +98,6 @@ const DungeonComp = React.createClass({
     );
   },
 
-  getInitialState() {
-    return { lastUpdate: 0 };
-  },
-
-  dungeonClick(e) {
-    e.preventDefault();
-
-    let x = e.clientX - e.currentTarget.clientLeft - e.currentTarget.offsetLeft;
-    let y = e.clientY - e.currentTarget.clientTop - e.currentTarget.offsetTop;
-    this.props.dungeon.hero.setDestination([x, y]);
-  },
-
-  startGame() {
-
-  },
-
   update(timestamp) {
 
     let elapsed = (timestamp - this.state.lastUpdate);
@@ -103,7 +106,15 @@ const DungeonComp = React.createClass({
 
     this.setState({ lastUpdate: timestamp, dungeon: this.state.dungeon });
 
-    requestAnimationFrame(this.update);
+    if (this.props.dungeon.cleared()) {
+      this.props.nextLevel();
+    }
+    else if (this.props.dungeon.heroKilled()) {
+      console.log("dungeon_comp-gameOver");
+      this.props.gameOver();
+    } else {
+      _animationRequestId = requestAnimationFrame(this.update);
+    }
   }
 });
 

@@ -8,24 +8,22 @@ class Game {
 
   constructor(level = 0) {
     this.level = level;
-    this.dungeon = new Dungeon(LevelConstants[this.level].enemies);
+    this.dungeon = new Dungeon(this.level);
     this.playing = false;
   }
 
   gameOver() {
-    return this.dungeon.hero.alive === false;
-  }
-
-  levelOver() {
-    return this.dungeon.cleared();
+    this.level = -1; // gameOver
+    this.playing = false;
   }
 
   nextLevel() {
     this.level++;
-    this.dungeon = new Dungeon(LevelConstants[this.level].enemies);
+    this.playing = false;
   }
 
   start() {
+    this.dungeon = new Dungeon(this.level);
     this.playing = true;
   }
 }

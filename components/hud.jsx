@@ -8,6 +8,11 @@ const Hud = React.createClass({
     this.gameListener = GameStore.registerListener(this.update);
   },
 
+  componentWillUnmount() {
+    debugger
+    GameStore.removeListener(this.gameListener);
+  },
+
   getInitialState() {
     return { hero: this.props.hero, events: [] };
   },
