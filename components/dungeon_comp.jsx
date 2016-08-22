@@ -106,7 +106,6 @@ const DungeonComp = React.createClass({
       this.props.nextLevel();
     }
     else if (this.props.dungeon.heroKilled()) {
-      console.log("dungeon_comp-gameOver");
       this.props.gameOver();
     } else {
       _animationRequestId = requestAnimationFrame(this.update);

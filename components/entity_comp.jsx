@@ -26,8 +26,6 @@ const EntityComp = React.createClass({
       rotation *= -1;
     }
 
-    console.log(rotation);
-
     if (rotation > 0.785398) {
       rotation = 0.785398;
     } else if (rotation < -0.785398) {

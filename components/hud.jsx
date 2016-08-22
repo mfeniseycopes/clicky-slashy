@@ -19,7 +19,7 @@ const Hud = React.createClass({
   render() {
 
     return (
-      <div className="hud">
+      <div className="hud" selectable="">
         <div className="health">
           <ul>Hero
             <li>
