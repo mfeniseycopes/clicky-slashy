@@ -46,9 +46,7 @@ h2 {
   color: red;
 }
 
-.dead {
-  opacity: 0.6;
-}
+
 
 .enemy {
   color: red;
@@ -57,34 +55,33 @@ h2 {
 
 .entity {
   position: absolute;
-  line-height: 25px;
-  font-size: 20px;
-  text-align: center;
-  user-select: none;
   background-size: contain;
   background-repeat: no-repeat;
+  background-position: center;
+  z-index: 30;
 }
-
-.entity > .fit-image {
-  height: 100%;
-  width: 100%;
-}
+  .dead {
+    opacity: 0.6;
+    z-index: 10;
+  }
+    .dead .weapon {
+      z-index: 20;
+    }
 
 .weapon {
   user-select: none;
   transform: rotate(45deg);
   transform-origin: right;
   position: absolute;
-  top: 20px;
-  left: -20px;
   margin: -10px;
-  z-index: 100;
+  z-index: 40;
   transition-property: all;
   transition-duration: .5s;
   transition-timing-function: ease-in-out;
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
+  pointer-events: none;
 }
 
 .weapon.attacking {
@@ -97,21 +94,173 @@ h2 {
 /* entity classes */
 
   .hero {
-    background-image: url("./images/cat-hero.png");
+    background-image: url("./images (copy)/cat-hero.png");
+    height: 50px;
+    width: 50px;
   }
+    .hero .weapon {
+      top: 6px;
+      right: 40px;
+    }
 
   .snake {
     background-image: url("./images/snake-1.png");
+    height: 100px;
+    width: 100px;
   }
+    .snake .weapon {
+      top: -19px;
+      right: 85px;
+    }
 
   .spider {
     background-image: url("./images/spider-1.png");
+    height: 100px;
+    width: 100px;
   }
+    .spider .weapon {
+      top: 14px;
+      right: 72px;
+    }
+
+  .rat {
+    background-image: url("./images/rat-1.png");
+    height: 100px;
+    width: 100px;
+  }
+    .rat .weapon {
+      top: 30px;
+      right: 78px;
+    }
+
+  .dragon {
+    background-image: url("./images/dragon.png");
+    height: 200px;
+    width: 200px;
+  }
+    .dragon .weapon {
+      top: 50px;
+      right: 145px;
+    }
+
+  .bat {
+    background-image: url("./images/bat.png");
+    height: 100px;
+    width: 100px;
+  }
+    .bat .weapon {
+      top: -5px;
+      right: 95px;
+    }
+
+  .grub {
+    background-image: url("./images/grub.png");
+    height: 100px;
+    width: 100px;
+  }
+    .grub .weapon {
+      top: 32px;
+      right: 92px;
+    }
+
+  .hand {
+    background-image: url("./images/hand.png");
+    height: 100px;
+    width: 100px;
+  }
+    .hand .weapon {
+      top: 21px;
+      right: 69px;
+    }
+
+  .skeleton {
+    background-image: url("./images/skeleton.png");
+    height: 200px;
+    width: 200px;
+  }
+    .skeleton .weapon {
+      top: -11px;
+      right: 90px;
+    }
+
+  .t-rex {
+    background-image: url("./images/t-rex.png");
+    height: 200px;
+    width: 200px;
+  }
+    .t-rex .weapon {
+      top: 60px;
+      right: 172px;
+    }
+
+  .john-cena {
+    background-image: url("./images/john-cena.png");
+    height: 200px;
+    width: 200px;
+  }
+    .john-cena .weapon {
+      top: 11px;
+      right: 121px;
+    }
 
 /* weapon classes */
 
+  .ax {
+    background-image: url("./images/ax.png");
+    height: 100px;
+    width: 100px;
+  }
+
   .knife {
     background-image: url("./images/knife-1.png");
-    height: 10px;
+    height: 50px;
     width: 50px;
+  }
+
+  .lightsaber {
+    background-image: url("./images/lightsaber_blue.png");
+    height: 100px;
+    width: 100px;
+  }
+
+  .ak47 {
+    background-image: url("./images/ak47.png");
+    height: 100px;
+    width: 100px;
+  }
+
+  .baseball-bat {
+    background-image: url("./images/baseball-bat.png");
+    height: 100px;
+    width: 100px;
+  }
+
+  .crowbar {
+    background-image: url("./images/crowbar.png");
+    height: 100px;
+    width: 100px;
+  }
+
+  .spear {
+    background-image: url("./images/spear.png");
+    height: 200px;
+    width: 200px;
+  }
+
+  .buster {
+    background-image: url("./images/sword-buster.png");
+    height: 100px;
+    width: 100px;
+  }
+
+  .flames {
+    background-image: url("./images/flames.png");
+    height: 120px;
+    width: 120px;
+  }
+
+  .hearts {
+    background-image: url("./images/hearts.png");
+    height: 100px;
+    width: 100px;
   }

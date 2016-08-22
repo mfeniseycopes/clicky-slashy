@@ -18,10 +18,6 @@ const DungeonComp = React.createClass({
     cancelAnimationFrame(_animationRequestId);
   },
 
-  componentWillReceiveProps(newProps) {
-    debugger
-  },
-
   dungeonClick(e) {
     e.preventDefault();
 

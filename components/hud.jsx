@@ -9,7 +9,6 @@ const Hud = React.createClass({
   },
 
   componentWillUnmount() {
-    debugger
     GameStore.removeListener(this.gameListener);
   },
 

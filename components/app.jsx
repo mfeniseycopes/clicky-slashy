@@ -40,7 +40,7 @@ const App = React.createClass({
       onClick = this.play;
       break;
 
-      case 2:
+      case 5:
       message = "The Hero is victorious! Play again?";
       btnText = "Yes!";
       onClick = this.newGame;

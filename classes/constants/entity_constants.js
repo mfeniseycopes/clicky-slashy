@@ -6,21 +6,102 @@ const EntityConstants = {
     // base
     name: "Hero",
     hp  : 100,
-    atk : 5,
+    atk : 10,
     spd : 0.2,
     agl : 1000,
-    wpn : WeaponConstants.KNIFE,
+    wpn : WeaponConstants.BUSTER,
     rad : 20,
 
     // component refs
     refs: {
-      charImg : "cat-hero.png",
       charCSSClass : "hero"
     }
   },
 
-  DRAGON: {
 
+  BAT: {
+    // base
+    name: "Bat",
+    hp  : 30,
+    atk : 5,
+    spd : 0.075,
+    agl : 5000,
+    pcp : 200,
+    wpn : WeaponConstants.AK47,
+    rad : 40,
+
+    // component refs
+    refs: {
+      charCSSClass : "bat"
+    }
+  },
+
+  DRAGON: {
+    // base
+    name: "Dragon",
+    hp  : 100,
+    atk : 10,
+    spd : 0.2,
+    agl : 5000,
+    pcp : 200,
+    wpn : WeaponConstants.FLAMES,
+    rad : 100,
+
+    // component refs
+    refs: {
+      charCSSClass : "dragon"
+    }
+  },
+
+  GRUB: {
+    // base
+    name: "Grub",
+    hp  : 30,
+    atk : 5,
+    spd : 0.075,
+    agl : 5000,
+    pcp : 200,
+    wpn : WeaponConstants.CROWBAR,
+    rad : 50,
+
+    // component refs
+    refs: {
+      charCSSClass : "grub"
+    }
+  },
+
+  HAND: {
+    // base
+    name: "Hand",
+    hp  : 30,
+    atk : 5,
+    spd : 0.075,
+    agl : 5000,
+    pcp : 200,
+    wpn : WeaponConstants.BASEBALL_BAT,
+    rad : 50,
+
+    // component refs
+    refs: {
+      charCSSClass : "hand"
+    }
+  },
+
+  JOHN_CENA: {
+    // base
+    name: "John Cena",
+    hp  : 30,
+    atk : 5,
+    spd : 0.075,
+    agl : 5000,
+    pcp : 200,
+    wpn : WeaponConstants.HEARTS,
+    rad : 100,
+
+    // component refs
+    refs: {
+      charCSSClass : "john-cena"
+    }
   },
 
   RAT: {
@@ -31,30 +112,45 @@ const EntityConstants = {
     spd : 0.05,
     agl : 5000,
     pcp : 200,
-    wpn : WeaponConstants.KNIFE,
+    wpn : WeaponConstants.AX,
     rad : 50,
 
     // component refs
     refs: {
-      charImg : "snake-1.png",
-      charCSSClass : "snake"
+      charCSSClass : "rat"
+    }
+  },
+
+  SKELETON: {
+    // base
+    name: "Skeleton",
+    hp  : 30,
+    atk : 5,
+    spd : 0.075,
+    agl : 5000,
+    pcp : 200,
+    wpn : WeaponConstants.SPEAR,
+    rad : 100,
+
+    // component refs
+    refs: {
+      charCSSClass : "skeleton"
     }
   },
 
   SNAKE: {
     // base
     name: "Snake",
-    hp  : 5,
-    atk : 1,
-    spd : 0.05,
+    hp  : 20,
+    atk : 3,
+    spd : 0.1,
     agl : 5000,
     pcp : 200,
-    wpn : WeaponConstants.KNIFE,
+    wpn : WeaponConstants.LIGHTSABER,
     rad : 50,
 
     // component refs
     refs: {
-      charImg : "snake-1.png",
       charCSSClass : "snake"
     }
   },
@@ -62,18 +158,34 @@ const EntityConstants = {
   SPIDER: {
     // base
     name: "Spider",
-    hp  : 5,
-    atk : 1,
-    spd : 0.05,
+    hp  : 30,
+    atk : 5,
+    spd : 0.075,
     agl : 5000,
     pcp : 200,
     wpn : WeaponConstants.KNIFE,
-    rad : 60,
+    rad : 50,
 
     // component refs
     refs: {
-      charImg : "spider-1.png",
       charCSSClass : "spider"
+    }
+  },
+
+  TREX: {
+    // base
+    name: "T-Rex",
+    hp  : 30,
+    atk : 5,
+    spd : 0.075,
+    agl : 5000,
+    pcp : 200,
+    wpn : WeaponConstants.LIGHTSABER,
+    rad : 100,
+
+    // component refs
+    refs: {
+      charCSSClass : "t-rex"
     }
   }
 
