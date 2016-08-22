@@ -19,17 +19,11 @@ const Hud = React.createClass({
   render() {
 
     return (
-      <div>
+      <div className="hud">
         <div className="health">
           <ul>Hero
             <li>
               HP: {this.state.hero.hp}/100
-            </li>
-            <li>
-              ATK: {this.state.hero.atk}
-            </li>
-            <li>
-              SPD: {this.state.hero.spd}
             </li>
           </ul>
         </div>

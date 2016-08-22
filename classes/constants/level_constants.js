@@ -1,11 +1,16 @@
-let all = ["BAT", "DRAGON", "GRUB", "HAND", "JOHN_CENA", "RAT", "SKELETON", "SNAKE", "TREX"]
+// let all = ["BAT", "DRAGON", "GRUB", "HAND", "JOHN_CENA", "RAT", "SKELETON", "SNAKE", "TREX"]
 const LevelConstants = [
 
-  { enemies: ["RAT"] },
-  { enemies: all },
-  { enemies: ["SNAKE", "SNAKE", "SNAKE", "SNAKE", "SNAKE", "SNAKE", "SNAKE", "SNAKE", "SNAKE"] },
-  { enemies: ["DRAGON"]},
-  { enemies: ["SPIDER", "SPIDER"] }
+  { enemies: ["SPIDER"]},
+  { enemies: ["RAT", "RAT"] },
+  { enemies: ["BAT", "BAT", "BAT"] },
+  { enemies: ["SNAKE", "SNAKE", "SNAKE", "SNAKE"] },
+  { enemies: ["GRUB", "GRUB", "GRUB", "GRUB", "GRUB"] },
+  { enemies: ["HAND", "HAND", "HAND", "HAND"] },
+  { enemies: ["SKELETON", "SKELETON"] },
+  { enemies: ["TREX"] },
+  { enemies: ["DRAGON"] },
+  { enemies: ["JOHN_CENA"] },
 
 ];
 

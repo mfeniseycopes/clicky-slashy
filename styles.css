@@ -5,6 +5,7 @@ div {
 
 body {
   background-color: #3B3832;
+  font-family: Ubuntu;
 }
 
 body > * {
@@ -28,24 +29,80 @@ h2 {
   padding-bottom: 20px;
 }
 
+.splash {
+  width: 600px;
+  margin: 200px auto;
+  text-align: center;
+}
+
+  .splash h3 {
+    font-size: 20px;
+    line-height: 30px;
+    color: #D2691E;
+  }
+
+  .splash p {
+    color: #fff;
+  }
+
+  .splash button {
+    margin-top: 50px;
+    width: 300px;
+    height: 75px;
+    font-size: 50px;
+    font-family: Bangers;
+    background-color: #76af0a;
+    border: 5px solid #304606;
+    border-radius: 5px;
+    color: #252427;
+    box-shadow: 2px 2px #000000;
+  }
+
+.hud {
+  width: 1040px;
+  margin: auto;
+  position: relative;
+}
+
+  .hud div {
+    display: block;
+    padding: 30px;
+
+    position: absolute;
+    bottom: 50px;
+    text-shadow: 2px 2px #000000;
+  }
+
+  .hud ul {
+    padding: 0;
+  }
+
+  .hud li {
+    list-style: none;
+  }
+
+  .health {
+    font-size: 20px;
+    color: red;
+    font-weight: bold;
+    left: 0;
+  }
+
+  .events {
+    color: #ffd700;
+    right: 0;
+  }
+
 .dungeon {
   width: 1200px;
   height: 800px;
-  /*background-color: #a38d64;*/
   background: url("./images/background.jpg");
-  border: 10px ridge #767065;
+  border: 15px ridge  #252427;;
   position: relative;
   box-sizing: content-box;
   cursor: crosshair;
   margin: 0 auto;
-  /*border-image: url("./images/border.jpg") 100 round;*/
 }
-
-.health {
-  font-size: 20px;
-  color: red;
-}
-
 
 
 .enemy {

@@ -25,37 +25,42 @@ const App = React.createClass({
 
     let level = this.state.game.level;
 
-    let btnText, message, onClick;
+    let btnText, onClick, splashHeader, splashText;
 
     switch(this.state.game.level) {
       case -1:
-      message = "The Hero has died. Game over.";
-      btnText = "Play Again";
+      splashHeader = "The Hero has died. Game over.";
+      splashText = "Try again?";
+      btnText = "Yes!";
       onClick = this.newGame;
       break;
 
       case 0:
-      message = "Want to play a game with clicks and slashes?";
-      btnText = "Yes!";
+      splashHeader = "Want to play a game that's both clicky and slashy?";
+      splashText = "Clicky Slashy is a fun dungeon crawler, roguelike game with totally rad graphics.";
+      btnText = "Let's play!";
       onClick = this.play;
       break;
 
-      case 5:
-      message = "The Hero is victorious! Play again?";
+      case 10:
+      splashHeader = "The Hero is victorious!";
+      splashText = "Play again?";
       btnText = "Yes!";
       onClick = this.newGame;
       break;
 
       default:
-      message = `Level ${level} complete! Ready for the next round?`;
+      splashHeader = `Level ${level} complete!`;
+      splashText = "Ready for the next round?";
       btnText = "Yes!";
       onClick = this.play;
       break;
     }
 
     return (
-      <div>
-        <h3>{message}</h3>
+      <div className="splash">
+        <h3>{splashHeader}</h3>
+        <p>{splashText}</p>
         <button onClick={onClick}>
           {btnText}
         </button>
