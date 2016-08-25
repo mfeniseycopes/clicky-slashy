@@ -83,6 +83,8 @@ class Entity {
 
   die() {
     this.alive = false;
+    this.atkTimeRemaining = 0;
+    this.hitTimeRemaining = 0;
     this.dungeon.entityDied(this.id);
   }
 
