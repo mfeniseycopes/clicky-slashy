@@ -142,7 +142,9 @@ class Entity {
     this.hitTimeRemaining -= elapsed;
 
     if (this.atkTimeRemaining <= 0 && this.atkTarget) {
-      this.atkTarget.receiveDamage(this.atk);
+      if (this.inAttackRange(this.atkTarget)) {
+        this.atkTarget.receiveDamage(this.atk);
+      }
       this.atkTarget = null;
     }
     // this.waitUntilSwitchDir -= elapsed;
