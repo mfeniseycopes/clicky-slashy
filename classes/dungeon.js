@@ -9,7 +9,7 @@ class Dungeon {
     this.lastEntityId = 0;
 
     this.width = 1200;
-    this.height = 800;
+    this.height = 675;
     this.level = level;
 
     this.hero = new Hero(EntityConstants.HERO, this, this.lastEntityId++);
