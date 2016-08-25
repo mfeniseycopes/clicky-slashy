@@ -25,7 +25,7 @@ const App = React.createClass({
 
     let level = this.state.game.level;
 
-    let btnText, onClick, splashHeader, splashText;
+    let btnText, onClick, splashHeader, splashText, helpText;
 
     switch(this.state.game.level) {
       case -1:
@@ -40,6 +40,7 @@ const App = React.createClass({
       splashText = "Clicky Slashy is a fun dungeon crawler, roguelike game with totally rad graphics.";
       btnText = "Let's play!";
       onClick = this.play;
+      helpText = "Use your mouse-click to move around the dungeon and attack enemies. Kill all the enemies to move to the next level.";
       break;
 
       case 10:
@@ -64,6 +65,9 @@ const App = React.createClass({
         <button onClick={onClick}>
           {btnText}
         </button>
+        { helpText ?
+          <div><h3>HOW TO PLAY</h3><p>{helpText}</p></div> : ""
+        }
       </div>
     );
   },

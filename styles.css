@@ -1,15 +1,43 @@
-div {
+* {
+  list-style: none;
+  box-sizing: content-box;
+  margin: 0;
+}
+
+div, ul, p {
   padding: 0;
   margin: 0;
+  display: block;
 }
 
 body {
   background-color: #3B3832;
   font-family: Ubuntu;
+  color: #fff;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
 }
 
 body > * {
   margin: 0 auto;
+}
+
+.clear:after {
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: " ";
+  clear: both;
+  height: 0;
+}
+
+header {
+  margin-top: 30px;
+  max-width: 1200px;
+  position: relative;
 }
 
 h1 {
@@ -29,24 +57,80 @@ h2 {
   padding-bottom: 20px;
 }
 
+.logo {
+  height: 150px;
+  position: absolute;
+  top: 0px;
+  left: 20px;
+}
+
+.float-left {
+  float: left;
+}
+
+.float-right {
+  float: right;
+}
+
+.links {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+}
+  .links div {
+    font-size: 25px;
+    height: 25px;
+    line-height: 25px;
+    margin-bottom: 20px;
+  }
+    .created-by p {
+      color: #008aff;
+      font-family: 'Bangers';
+      font-size: 25px;
+      height: 25px;
+      line-height: 25px;
+      text-align: right;
+    }
+    .created-by i {
+      font-size: 12px;
+      vertical-align: top;
+    }
+    .sites li {
+      margin-right: 10px;
+    }
+
+footer {
+  margin-top: 30px;
+  display: block;
+}
+
+  footer p {
+    text-align: center;
+  }
+
+
 .splash {
   width: 600px;
-  margin: 200px auto;
+  height: 475px;
+  margin: auto;
   text-align: center;
+  padding: 100px;
 }
 
   .splash h3 {
     font-size: 20px;
     line-height: 30px;
     color: #D2691E;
+    margin-bottom: 15px;
   }
 
   .splash p {
     color: #fff;
+    line-height: 30px;
   }
 
   .splash button {
-    margin-top: 50px;
+    margin: 50px auto;
     width: 300px;
     height: 75px;
     font-size: 50px;
@@ -106,7 +190,7 @@ h2 {
 
 .dungeon {
   width: 1200px;
-  height: 800px;
+  height: 675px;
   background: url("./images/background.jpg");
   border: 15px ridge  #252427;;
   position: relative;
