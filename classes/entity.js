@@ -26,6 +26,8 @@ class Entity {
     this.atkTimeRemaining = 0;
     this.atkAnimationLength = 1000; // ms
     this.destination = null;
+    this.hitTimeRemaining = 0;
+    this.hitAnimationLength = 250;
 
     // for react component
     this.refs = stats.refs;
@@ -113,8 +115,9 @@ class Entity {
 
   receiveDamage(damage) {
     GameStore.newEvent(this.name, damage);
-
     this.hp -= damage;
+    this.hitTimeRemaining = this.hitAnimationLength;
+
     if (this.hp <= 0) {
       this.die();
     }
@@ -134,6 +137,7 @@ class Entity {
   updateTimers(elapsed) {
     this.atkTimeRemaining -= elapsed;
     this.waitUntilAtk -= elapsed;
+    this.hitTimeRemaining -= elapsed;
 
     if (this.atkTimeRemaining <= 0 && this.atkTarget) {
       this.atkTarget.receiveDamage(this.atk);

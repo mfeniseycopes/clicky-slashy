@@ -211,7 +211,19 @@ footer {
   background-repeat: no-repeat;
   background-position: center;
   z-index: 30;
+  transition
 }
+  .hit {
+    -webkit-filter: drop-shadow(0 0 10px rgba(255, 246, 143, 0.9));
+    filter: url("./images/cat-hero.png");
+    transition: opacity .075s ease-in-out;
+  }
+
+  .hit-bright {
+    -webkit-filter: drop-shadow(0 0 10px rgba(255, 255, 255, 1));
+    filter: url("./images/cat-hero.png");
+    transition: opacity .1s ease-in-out;
+  }
   .dead {
     opacity: 0.6;
     z-index: 10;
@@ -246,7 +258,7 @@ footer {
 /* entity classes */
 
   .hero {
-    background-image: url("./images (copy)/cat-hero.png");
+    background-image: url("./images/cat-hero.png");
     height: 50px;
     width: 50px;
   }

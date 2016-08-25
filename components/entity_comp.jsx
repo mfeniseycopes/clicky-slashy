@@ -44,6 +44,13 @@ const EntityComp = React.createClass({
     if (!this.props.alive) {
       classNames += " dead";
     }
+    if (this.props.hitTimeRemaining > 0) {
+      if (this.props.hitTimeRemaining < 75 || this.props.hitTimeRemaining > 175) {
+        classNames += " hit";
+      } else {
+        classNames += " hit-bright";
+      }
+    }
     return classNames;
   },
 
