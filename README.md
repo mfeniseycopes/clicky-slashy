@@ -64,6 +64,7 @@ let newPos = [this.pos[0] + move[0], this.pos[1] + move[1]];
 ### Enemy AI
 
 <img align="center" src="docs/images/ai.png" height="200px" style="display: block; "/>
+
 *Rats honing in on our brave hero*
 
 Enemy instances are passed a reference to the hero and able to locate our brave hero if the distance between them is less than a certain threshold (defined as `pcp` ("Perception") on the entity class). When the hero is located, a unit vector is calculated to determine the direction the enemy should move to intercept the hero at his/her current position.
@@ -71,6 +72,7 @@ Enemy instances are passed a reference to the hero and able to locate our brave 
 ### Multi-level gameplay
 
 <img align="center" src="docs/images/levels.png" height="200px" style="display: block; "/>
+
 *A level transition screen*
 
 At each rendering, the game asks the dungeon if all the enemies are dead. If this is true, the dungeon is removed and replaced with a level transition screen. This provides the player a well needed break from clicking and slashing and an opportunity to wipe the sweat from their palms. When the player is ready to resume, they click a button to enter the next level, where a new dungeon with new enemies is instantiated.
@@ -99,15 +101,18 @@ Each entity class has stats for attack animation duration and hit animation dura
   transition: opacity .1s ease-in-out;
 }
 ```
+
 *CSS classes define action animations*
 
 <img align="center" src="docs/images/rats.gif" height="300px" style="display: block; "/>
+
 *Our brave hero battles axe-wielding rats*
 
 ### The Cat is Adorable
 Our brave protagonist is based on my adorable cat Chloe.
 
 <img align="center" src="docs/images/chloe.jpg" height="300px" style="display: block; "/>
+
 *Isn't she pretty?*
 
 [live]: http://clicky-slashy.rocks
