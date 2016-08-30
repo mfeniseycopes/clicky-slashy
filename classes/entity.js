@@ -24,7 +24,7 @@ class Entity {
     this.waitUntilAtk = 0;
     this.atkTarget = 0;
     this.atkTimeRemaining = 0;
-    this.atkAnimationLength = 1000; // ms
+    this.atkAnimationLength = 1000 * stats.wpn.duration;
     this.destination = null;
     this.hitTimeRemaining = 0;
     this.hitAnimationLength = 250;

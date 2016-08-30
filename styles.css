@@ -234,14 +234,11 @@ footer {
 
 .weapon {
   user-select: none;
-  transform: rotate(45deg);
   transform-origin: right;
   position: absolute;
   margin: -10px;
   z-index: 40;
   transition-property: all;
-  transition-duration: .5s;
-  transition-timing-function: ease-in-out;
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -249,9 +246,8 @@ footer {
 }
 
 .weapon.attacking {
-  transform: rotate(-45deg);
+  transform: scale(1.1, 1.1);
   transition-property: all;
-  transition-duration: .5s;
   transition-timing-function: ease-in-out;
 }
 
@@ -373,58 +369,154 @@ footer {
     background-image: url("./images/ax.png");
     height: 100px;
     width: 100px;
+
+    transform: rotate(45deg);
+    transition-duration: .5s;
+    transition-timing-function: ease-in-out;
+  }
+  .ax.attacking {
+    transform: rotate(-45deg);
+    transition-property: all;
+    transition-duration: .5s;
+    transition-timing-function: ease-in-out;
   }
 
   .knife {
     background-image: url("./images/knife-1.png");
     height: 50px;
     width: 50px;
+
+    transition-duration: .1s;
+    transition-timing-function: ease-in-out;
   }
+    .knife.attacking {
+      transform: translateX(-20px); /* stabby */
+      transition-property: all;
+      transition-duration: .1s;
+      transition-timing-function: ease-in-out;
+    }
 
   .lightsaber {
     background-image: url("./images/lightsaber_blue.png");
     height: 100px;
     width: 100px;
+
+    transform: rotate(315deg);
+    transition-duration: .1s;
   }
+    .lightsaber.attacking {
+      transform: rotate(-45deg);
+      transition-property: all;
+      transition-duration: .9s;
+      transition-timing-function: ease-in-out;
+    }
 
   .ak47 {
     background-image: url("./images/ak47.png");
     height: 100px;
     width: 100px;
+    transition-duration: .3s;
+    transition-timing-function: ease-in-out;
+  }
+  .ak47.attacking {
+    transform: rotate(15deg) translateX(10px);
+    transition-property: all;
+    transition-duration: .1s;
+    transition-timing-function: ease-in-out;
   }
 
   .baseball-bat {
     background-image: url("./images/baseball-bat.png");
     height: 100px;
     width: 100px;
+
+    transform: rotate(30deg);
+    transition-duration: .5s;
+    transition-timing-function: ease-in-out;
   }
+    .baseball-bat.attacking {
+      transform: rotate(-45deg) scale(1.1, 1.1);
+      transition-property: all;
+      transition-duration: .3s;
+      transition-timing-function: ease-in-out;
+    }
+
+    .buster {
+      background-image: url("./images/sword-buster.png");
+      height: 100px;
+      width: 100px;
+
+      transform: rotate(45deg);
+      transition-duration: 0.5s;
+      transition-timing-function: ease-in-out;
+    }
+    .buster.attacking {
+      transform: rotate(-20deg);
+      transition-property: all;
+      transition-duration: 0.2s;
+      transition-timing-function: ease-in-out;
+    }
 
   .crowbar {
     background-image: url("./images/crowbar.png");
     height: 100px;
     width: 100px;
+
+    transform: rotate(45deg);
+    transition-duration: 0.5s;
+    transition-timing-function: ease-in-out;
+  }
+  .crowbar.attacking {
+    transform: rotate(-20deg);
+    transition-property: all;
+    transition-duration: 0.3s;
+    transition-timing-function: ease-in-out;
   }
 
   .spear {
     background-image: url("./images/spear.png");
     height: 200px;
     width: 200px;
-  }
 
-  .buster {
-    background-image: url("./images/sword-buster.png");
-    height: 100px;
-    width: 100px;
+    transform: rotate(20deg);
+    transition-duration: 0.7s;
+    transition-timing-function: ease-in-out;
   }
+    .spear.attacking {
+      transform: rotate(0deg) translateX(-30px);
+      transition-property: all;
+      transition-duration: 0.3s;
+      transition-timing-function: ease-in-out;
+    }
 
   .flames {
     background-image: url("./images/flames.png");
     height: 120px;
     width: 120px;
+
+    opacity: 0;
+    transition-timing-function: ease-in-out;
   }
+    .flames.attacking {
+      opacity: 1;
+      transform: translateX(-300px);
+      transition-property: all;
+      transition-duration: 1s;
+      transition-timing-function: ease-in;
+    }
 
   .hearts {
     background-image: url("./images/hearts.png");
     height: 100px;
     width: 100px;
+
+    opacity: 0;
+    transition-timing-function: ease-in-out;
+  }
+  .hearts.attacking {
+    opacity: 1;
+    transform: translateX(-100px);
+    transition-property: all;
+    transition-duration: 1s;
+    transition-timing-function: ease-in;
   }

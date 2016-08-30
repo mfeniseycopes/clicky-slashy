@@ -3,6 +3,7 @@ const WeaponConstants = {
   KNIFE: {
     name : "Knife",
     rng : 10,
+    duration: 0.2,
 
     // component refs
     refs: {
@@ -14,6 +15,7 @@ const WeaponConstants = {
   LIGHTSABER: {
     name : "Lightsaber",
     rng : 30,
+    duration: 1,
 
     // component refs
     refs: {
@@ -25,6 +27,7 @@ const WeaponConstants = {
   BUSTER: {
     name : "Buster Sword",
     rng : 100,
+    duration: 0.7,
 
     // component refs
     refs: {
@@ -35,7 +38,8 @@ const WeaponConstants = {
 
   AK47: {
     name : "AK-47",
-    rng : 100,
+    rng : 300,
+    duration: 0.4,
 
     // component refs
     refs: {
@@ -58,6 +62,7 @@ const WeaponConstants = {
   BASEBALL_BAT: {
     name : "Baseball Bat",
     rng : 100,
+    duration: 0.8,
 
     // component refs
     refs: {
@@ -69,6 +74,7 @@ const WeaponConstants = {
   CROWBAR: {
     name : "Crowbar",
     rng : 100,
+    duration: 0.8,
 
     // component refs
     refs: {
@@ -80,6 +86,7 @@ const WeaponConstants = {
   SPEAR: {
     name : "Spear",
     rng : 200,
+    duration : 1,
 
     // component refs
     refs: {
@@ -90,7 +97,8 @@ const WeaponConstants = {
 
   FLAMES: {
     name : "Flames",
-    rng : 120,
+    rng : 200,
+    duration: 1,
 
     // component refs
     refs: {
@@ -102,6 +110,7 @@ const WeaponConstants = {
   HEARTS: {
     name : "Hearts",
     rng : 100,
+    duration: 1,
 
     // component refs
     refs: {
