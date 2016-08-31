@@ -3,6 +3,7 @@ import React       from "react";
 import Game        from "../classes/game";
 import DungeonComp from "./dungeon_comp";
 import Hud         from "./hud";
+import GameStore   from "../stores/game_store";
 
 const App = React.createClass({
 
@@ -62,7 +63,7 @@ const App = React.createClass({
       <div className="splash">
         <h3>{splashHeader}</h3>
         <p>{splashText}</p>
-        <button onClick={onClick}>
+        <button href="main" onClick={onClick}>
           {btnText}
         </button>
         { helpText ?
@@ -78,11 +79,13 @@ const App = React.createClass({
   },
 
   gameOver() {
+    GameStore.clearEvents();
     this.state.game.gameOver();
     this.setState({ game: this.state.game });
   },
 
   nextLevel() {
+    GameStore.clearEvents();
     this.state.game.nextLevel();
     this.setState({ game: this.state.game });
   },
@@ -94,6 +97,7 @@ const App = React.createClass({
 
   play() {
     this.state.game.start();
+    location.hash = "#main";
     this.setState({ game: this.state.game });
   },
 

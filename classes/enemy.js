@@ -53,7 +53,9 @@ class Enemy extends Entity {
   update(elapsed) {
     // this.updateTimers(elapsed);
     super.update(elapsed);
-    this.inAttackRange(this.hero()) ? this.attack(this.hero()) : this.move(elapsed);
+    if (!this.dying) {
+      this.inAttackRange(this.hero()) ? this.attack(this.hero()) : this.move(elapsed);
+    }
   }
 
   updateTimers(elapsed) {

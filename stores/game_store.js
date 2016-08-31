@@ -22,6 +22,10 @@ const GameStore = {
     });
   },
 
+  clearEvents() {
+    _events = ["", "", "", "", ""];
+  },
+
   enemies() {
     return _enemies;
   },

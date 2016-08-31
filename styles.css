@@ -19,7 +19,19 @@ body {
 a {
   text-decoration: none;
   color: inherit;
+  transition: .5s all ease-in-out;
 }
+
+a:hover {
+  transition: .5s all ease-in-out;
+  color: #888;
+}
+
+a, button {
+  cursor: pointer;
+}
+
+
 
 body > * {
   margin: 0 auto;
@@ -140,6 +152,12 @@ footer {
     border-radius: 5px;
     color: #252427;
     box-shadow: 2px 2px #000000;
+    transition: .5s all ease-in-out;
+  }
+  .splash button:hover {
+    transition: all .5s ease-in-out;
+    transform: scale(1.03);
+    background-color:
   }
 
 .hud {
@@ -211,22 +229,27 @@ footer {
   background-repeat: no-repeat;
   background-position: center;
   z-index: 30;
-  transition
 }
   .hit {
+    transition: all .075s ease-in-out;
     -webkit-filter: drop-shadow(0 0 10px rgba(255, 246, 143, 0.9));
-    filter: url("./images/cat-hero.png");
-    transition: opacity .075s ease-in-out;
+    padding-bottom: 10px;
   }
 
   .hit-bright {
+    transition: all .1s ease-in-out;
     -webkit-filter: drop-shadow(0 0 10px rgba(255, 255, 255, 1));
-    filter: url("./images/cat-hero.png");
-    transition: opacity .1s ease-in-out;
   }
+
+  .dying {
+    transition: opacity 1s ease-in-out;
+    opacity: 0.6;
+    -webkit-filter: sepia(100%) contrast(150%) drop-shadow(0 0 5px rgba(50, 50, 50, 1));
+    z-index: 10;
+  }
+
   .dead {
     opacity: 0.6;
-    z-index: 10;
   }
     .dead .weapon {
       z-index: 20;
@@ -262,6 +285,7 @@ footer {
       top: 6px;
       right: 40px;
     }
+
 
   .snake {
     background-image: url("./images/snake-1.png");
@@ -519,4 +543,54 @@ footer {
     transition-property: all;
     transition-duration: 1s;
     transition-timing-function: ease-in;
+  }
+
+
+
+
+
+
+
+
+
+
+  @-webkit-keyframes shake {
+    from, to {
+      -webkit-transform: translate3d(0, 0, 0);
+      transform: translate3d(0, 0, 0);
+    }
+
+    10%, 30%, 50%, 70%, 90% {
+      -webkit-transform: translate3d(-10px, 0, 0);
+      transform: translate3d(-10px, 0, 0);
+    }
+
+    20%, 40%, 60%, 80% {
+      -webkit-transform: translate3d(10px, 0, 0);
+      transform: translate3d(10px, 0, 0);
+    }
+  }
+
+  @keyframes shake {
+    from, to {
+      -webkit-transform: translate3d(0, 0, 0);
+      transform: translate3d(0, 0, 0);
+    }
+
+    10%, 30%, 50%, 70%, 90% {
+      -webkit-transform: translate3d(-3px, 0, 0);
+      transform: translate3d(-3px, 0, 0);
+    }
+
+    20%, 40%, 60%, 80% {
+      -webkit-transform: translate3d(3px, 0, 0);
+      transform: translate3d(3px, 0, 0);
+    }
+  }
+
+  .shake {
+    -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+    -webkit-animation-name: shake;
+    animation-name: shake;
   }

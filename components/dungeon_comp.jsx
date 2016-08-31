@@ -5,6 +5,7 @@ import Enemy      from "../classes/enemy";
 import Hero       from "../classes/hero";
 import EntityComp  from "./entity_comp";
 import LevelConstants from "../classes/constants/level_constants";
+import GameStore from "../stores/game_store";
 
 let _animationRequestId;
 
@@ -54,6 +55,7 @@ const DungeonComp = React.createClass({
           clickHandler={this.enemyClick}
           refs={enemy.refs}
           wpnRefs={enemy.wpn.refs}
+          dying={enemy.dying}
           dir={enemy.dir}>
         </EntityComp>
       );
@@ -65,19 +67,21 @@ const DungeonComp = React.createClass({
   },
 
   hero() {
-    return <EntityComp
-      key={this.props.dungeon.hero.id}
-      id={this.props.dungeon.hero.id}
-      pos={this.props.dungeon.hero.pos}
-      radius={this.props.dungeon.hero.radius}
-      alive={this.props.dungeon.hero.alive}
-      atkTimeRemaining={this.props.dungeon.hero.atkTimeRemaining}
-      hitTimeRemaining={this.props.dungeon.hero.hitTimeRemaining}
-      clickHandler={this.heroClick}
-      refs={this.props.dungeon.hero.refs}
-      wpnRefs={this.props.dungeon.hero.wpn.refs}
-      dir={this.props.dungeon.hero.dir}>
-    </EntityComp>;
+    return(
+      <EntityComp
+        key={this.props.dungeon.hero.id}
+        id={this.props.dungeon.hero.id}
+        pos={this.props.dungeon.hero.pos}
+        radius={this.props.dungeon.hero.radius}
+        alive={this.props.dungeon.hero.alive}
+        atkTimeRemaining={this.props.dungeon.hero.atkTimeRemaining}
+        hitTimeRemaining={this.props.dungeon.hero.hitTimeRemaining}
+        clickHandler={this.heroClick}
+        refs={this.props.dungeon.hero.refs}
+        wpnRefs={this.props.dungeon.hero.wpn.refs}
+        dir={this.props.dungeon.hero.dir}>
+      </EntityComp>
+    );
   },
 
   heroClick() {
@@ -89,7 +93,7 @@ const DungeonComp = React.createClass({
     let hero    = this.hero();
 
     return (
-      <div className="dungeon" onClick={this.dungeonClick}>
+      <div className={`dungeon ${this.props.dungeon.hero.hitTimeRemaining > 0 ? "shake" : ""}`} onClick={this.dungeonClick}>
         { enemies }
         { hero }
       </div>

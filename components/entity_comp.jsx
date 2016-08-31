@@ -12,6 +12,9 @@ const EntityComp = React.createClass({
     );
   },
 
+
+
+
   charStyle() {
     let rotation = Math.acos([-1] * this.props.dir[0]);
     let scaleX = 1;
@@ -21,8 +24,6 @@ const EntityComp = React.createClass({
       scaleX = -1;
     }
     if (this.props.dir[1] > 0) {
-      // scaleY = -1;
-      // rotation -= 2 * -0.785398;
       rotation *= -1;
     }
 
@@ -41,10 +42,13 @@ const EntityComp = React.createClass({
 
   entityClassNames() {
     let classNames = `entity ${this.props.refs.charCSSClass}`;
-    if (!this.props.alive) {
+    if (this.props.dying) {
+      classNames += " dying";
+    }
+    else if (!this.props.alive) {
       classNames += " dead";
     }
-    if (this.props.hitTimeRemaining > 0) {
+    else if (this.props.hitTimeRemaining > 0) {
       if (this.props.hitTimeRemaining < 75 || this.props.hitTimeRemaining > 175) {
         classNames += " hit";
       } else {

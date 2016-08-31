@@ -81,11 +81,16 @@ class Entity {
     }
   }
 
-  die() {
+  dead() {
     this.alive = false;
-    this.atkTimeRemaining = 0;
-    this.hitTimeRemaining = 0;
     this.dungeon.entityDied(this.id);
+  }
+
+  die() {
+    this.dying = true;
+    this.dyingTimeRemaining = 2000;
+    this.atkTimeRemaining = 0;
+    window.setTimeout(2, () => { this.dead(); });
   }
 
   inAttackRange(otherEntity) {
@@ -120,9 +125,9 @@ class Entity {
     this.hp -= damage;
     this.hitTimeRemaining = this.hitAnimationLength;
 
-    if (this.hp <= 0) {
-      this.die();
-    }
+    // if (this.hp <= 0) {
+    //   this.die();
+    // }
   }
 
   update(elapsed) {
@@ -140,6 +145,7 @@ class Entity {
     this.atkTimeRemaining -= elapsed;
     this.waitUntilAtk -= elapsed;
     this.hitTimeRemaining -= elapsed;
+    if (this.dying) { this.dyingTimeRemaining -= elapsed; }
 
     if (this.atkTimeRemaining <= 0 && this.atkTarget) {
       if (this.inAttackRange(this.atkTarget)) {
@@ -147,7 +153,12 @@ class Entity {
       }
       this.atkTarget = null;
     }
-    // this.waitUntilSwitchDir -= elapsed;
+    if (this.hp <= 0 && !this.dying) {
+      this.die();
+    }
+    if (this.dyingTimeRemaining <= 0) {
+      this.dead();
+    }
   }
 
   validPos(pos) {
